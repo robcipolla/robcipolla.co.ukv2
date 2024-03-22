@@ -1,0 +1,45 @@
+---
+import LinkedIn from "@components/icons/LinkedIn.astro";
+import recommendations from "@utils/constants/recommendations.json";
+
+const recommends = recommendations.recommendations;
+---
+
+<section class="py-16">
+  <div class="container">
+    <h2 class="mb-11 text-center text-3xl font-semibold">
+      What people are saying
+    </h2>
+    <div class="flex flex-col items-center space-y-5">
+      {
+        recommends.map((recommend) => (
+          <article class="w-fit rounded-lg bg-white p-4 shadow-md">
+            <div class="mt-4 flex items-center">
+              <img
+                src={recommend.imageURL}
+                alt={recommend.name}
+                class="h-12 w-12 rounded-full"
+              />
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold">
+                  <a
+                    href={recommend.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <LinkedIn class="inline h-6 w-6 text-[#0077B5] transition-opacity hover:opacity-50" />
+                  </a>
+                  {recommend.name}
+                </h3>
+                <p class="text-gray-500">{recommend.role}</p>
+              </div>
+            </div>
+            <div class="prose prose-lg">
+              <p class="mt-4 text-gray-600" set:html={recommend.text} />
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

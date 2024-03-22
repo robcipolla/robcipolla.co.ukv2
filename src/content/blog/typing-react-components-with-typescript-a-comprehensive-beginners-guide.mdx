@@ -1,0 +1,306 @@
+---
+title: "Beginner's guide to React components with TypeScript"
+description: "Learn how to correctly type React components using TypeScript, from basic examples to more complex concepts. Enhance your React development with the power of TypeScript for more robust and maintainable code."
+date: 2023-12-11
+excerpt: "Learn how to correctly type React components using TypeScript by building a card component"
+readingTime: 15
+featuredImageURL: "/images/blog/typing-react-components-with-typescript-a-comprehensive-beginners-guide/confused-typescript-developer.webp"
+featuredImageURLOG: "https://robcipolla.co.uk/images/blog/typing-react-components-with-typescript-a-comprehensive-beginners-guide/confused-typescript-developer.webp"
+featuredImageAlt: "software developer looking confused at screen in fantasy setting"
+featuredImageAIPrompt: "software developer looking confused at screen in fantasy setting --ar 16:9"
+---
+
+## Contents
+
+## Introduction
+
+This guide will teach you how to correctly type React components using TypeScript. We'll begin with a simple example of a Card component and gradually introduce concepts such as optional props, default props, state, and children.
+
+Upon completing this guide, you'll understand the basics of using TypeScript with React components and be ready to apply this knowledge in your future learning.
+
+## Typing a basic component
+
+For this example, lets imagine a Card component which displays a title, a list of bullet points and whether or not to display a special offer flag.
+
+Here is the props our component will accept and their types:
+
+- **title**: string
+- **bulletPoints**: array of string
+- **showSpecialOffer**: boolean (true or false)
+
+Once you know what props your component requires you can start to write your component, starting with the type at the top.
+
+```tsx
+import React from "react";
+
+type BulletPoint = string;
+
+type CardProps = {
+  title: string;
+  bulletPoints: BulletPoint[];
+  showSpecialOffer: boolean;
+};
+```
+
+Notice how I have separated out the BulletPoint type, this will be useful for when we render out the list items.
+
+**Note:** in a real component you probably wouldn’t go to this extent for a simple string type. This is just an example.
+
+Now lets write out the component making use of our new types:
+
+```tsx
+import React from "react";
+
+type BulletPoint = string;
+
+type CardProps = {
+  title: string;
+  bulletPoints: BulletPoint[];
+  showSpecialOffer: boolean;
+};
+
+const CardComponent = (props: CardProps) => {
+  const { title, bulletPoints, showSpecialOffer } = props;
+
+  return (
+    <div className="card">
+      <h2>{title}</h2>
+      <ul>
+        {bulletPoints.map((point: BulletPoint, i: number) => {
+          return <li key={i}>{point}</li>;
+        })}
+      </ul>
+      {showSpecialOffer && (
+        <div className="special-offer-label">Special Offer</div>
+      )}
+    </div>
+  );
+};
+
+export default CardComponent;
+```
+
+## Setting a default type on components
+
+Now we have the basics of a component, let’s step it up a little and make this component a little more complex. Let’s make the `showSpecialOffer` parameter optional and set it by default to false. This would leave the required props as the `title` and array of `bulletPoints`.
+
+```tsx
+import React from "react";
+
+type BulletPoint = string;
+
+type CardProps = {
+  title: string;
+  bulletPoints: BulletPoint[];
+  showSpecialOffer?: boolean;
+};
+
+const CardComponent = (props: CardProps) => {
+  const { title, bulletPoints, showSpecialOffer = false } = props;
+
+  return (
+    <div className="card">
+      <h2>{title}</h2>
+      <ul>
+        {bulletPoints.map((point: BulletPoint, i: number) => {
+          return <li key={i}>{point}</li>;
+        })}
+      </ul>
+      {showSpecialOffer && (
+        <div className="special-offer-label">Special Offer</div>
+      )}
+    </div>
+  );
+};
+
+export default CardComponent;
+```
+
+In the above code snippet, where we define the type of `showSpecialOffer` we have added a ? before the colon like so: `showSpecialOffer ?: boolean`
+
+This will mean that our editor will no longer give us a type error if we do not pass it the `showSpecialOffer` prop, and by default this will be set to `false`. See below for an example on how we can now use this component:
+
+```tsx
+<CardComponent
+		title="Card title"
+		bulletPoints={[
+			'point one',
+			'point two',
+			'point three'
+		]}
+/>
+
+<CardComponent
+		title="Card title"
+		bulletPoints={[
+			'point one',
+			'point two',
+			'point three'
+		]}
+		showSpecialOffer
+/>
+```
+
+**Note:** by just passing the prop name for `showSpecialOffer` (which is a boolean) we are setting it to true.
+
+## Using the `useState` Hook in TypeScript with React
+
+Now that we have the foundation of a fully type-safe card component, let’s enhance its interactivity! Suppose we want to add a button to our card that, when clicked, toggles the visibility of the special offer label. To achieve this, we'll make use of the `useState` hook provided by React.
+
+Firstly, import `useState` and declare a new state variable called `isSpecialOfferVisible`. To ensure type safety, we can explicitly specify the types for both the state and the updater function using TypeScript generics.
+
+```tsx
+import React, { useState } from "react";
+
+type BulletPoint = string;
+
+type CardProps = {
+  title: string;
+  bulletPoints: BulletPoint[];
+  showSpecialOffer?: boolean;
+};
+
+const CardComponent = (props: CardProps) => {
+  const { title, bulletPoints, showSpecialOffer = false } = props;
+
+  // Declare the state variable for the special offer visibility
+  const [isSpecialOfferVisible, setIsSpecialOfferVisible] =
+    useState<boolean>(showSpecialOffer);
+
+  return (
+    <div className="card">
+      <h2>{title}</h2>
+      <ul>
+        {bulletPoints.map((point: BulletPoint, i: number) => {
+          return <li key={i}>{point}</li>;
+        })}
+      </ul>
+      {isSpecialOfferVisible && (
+        <div className="special-offer-label">Special Offer</div>
+      )}
+      <button onClick={() => setIsSpecialOfferVisible(!isSpecialOfferVisible)}>
+        Toggle Special Offer
+      </button>
+    </div>
+  );
+};
+
+export default CardComponent;
+```
+
+In this example, we've added `boolean` as a generic type parameter to `useState`, specifying that `isSpecialOfferVisible` will be of type boolean. This ensures that TypeScript understands and enforces the correct types for our state variable and updater function, providing a more robust type safety for our React components.
+
+## Making use of the children prop
+
+In many components, you'll want to allow the consuming components to pass in arbitrary JSX or other components. This is where the special `children` prop comes in handy. The `children` prop allows components to be composed together, and is automatically available on every component instance. In TypeScript, we can type the `children` prop as `React.ReactNode`, which is a type that React uses to represent any valid thing that can be rendered.
+
+Let's enhance our `CardComponent` to accept `children`:
+
+```tsx
+import React, { useState, ReactNode } from "react";
+
+type BulletPoint = string;
+
+type CardProps = {
+  title: string;
+  bulletPoints: BulletPoint[];
+  showSpecialOffer?: boolean;
+  children?: ReactNode;
+};
+
+const CardComponent = (props: CardProps) => {
+  const { title, bulletPoints, showSpecialOffer = false, children } = props;
+
+  const [isSpecialOfferVisible, setIsSpecialOfferVisible] =
+    useState<boolean>(showSpecialOffer);
+
+  return (
+    <div className="card">
+      <h2>{title}</h2>
+      <ul>
+        {bulletPoints.map((point: BulletPoint, i: number) => {
+          return <li key={i}>{point}</li>;
+        })}
+      </ul>
+      {isSpecialOfferVisible && (
+        <div className="special-offer-label">Special Offer</div>
+      )}
+      <button onClick={() => setIsSpecialOfferVisible(!isSpecialOfferVisible)}>
+        Toggle Special Offer
+      </button>
+      {children}
+    </div>
+  );
+};
+
+export default CardComponent;
+```
+
+Now, we can pass any valid JSX into our `CardComponent`:
+
+```tsx
+<CardComponent
+  title="Card title"
+  bulletPoints={["point one", "point two", "point three"]}
+>
+  <p>This is some additional content that will be rendered inside the card.</p>
+</CardComponent>
+```
+
+By typing the `children` prop as `React.ReactNode`, we offer a flexible way for other components to interact with `CardComponent`, while still maintaining type safety with TypeScript.
+
+## Introducing the `React.FC` type
+
+The `React.FC` type is a shorthand for defining function components in TypeScript. It stands for `React.FunctionComponent` and it provides some additional properties out of the box, such as the `children` prop we discussed in the previous section. Let's see how we can type our `CardComponent` using `React.FC`.
+
+```tsx
+import React, { useState, ReactNode, FC } from "react";
+
+type BulletPoint = string;
+
+type CardProps = {
+  title: string;
+  bulletPoints: BulletPoint[];
+  showSpecialOffer?: boolean;
+};
+
+const CardComponent: FC<CardProps> = ({
+  title,
+  bulletPoints,
+  showSpecialOffer = false,
+  children,
+}) => {
+  const [isSpecialOfferVisible, setIsSpecialOfferVisible] =
+    useState<boolean>(showSpecialOffer);
+
+  return (
+    <div className="card">
+      <h2>{title}</h2>
+      <ul>
+        {bulletPoints.map((point: BulletPoint, i: number) => {
+          return <li key={i}>{point}</li>;
+        })}
+      </ul>
+      {isSpecialOfferVisible && (
+        <div className="special-offer-label">Special Offer</div>
+      )}
+      <button onClick={() => setIsSpecialOfferVisible(!isSpecialOfferVisible)}>
+        Toggle Special Offer
+      </button>
+      {children}
+    </div>
+  );
+};
+
+export default CardComponent;
+```
+
+In this example, we've declared `CardComponent` as a `React.FC` type with `CardProps` as its generic. This tells TypeScript that `CardComponent` is a function component that expects props of type `CardProps`. Also, because `React.FC` includes `children` in its definition, we no longer need to include it in `CardProps`.
+
+Using `React.FC` can make your component definitions more concise and give you access to additional properties such as `defaultProps`, `propTypes`, and `contextTypes`. However, it's important to note that `React.FC` is not suitable for all situations. If your component doesn't use children, or if it has additional static properties, you might need to define your component differently.
+
+## Conclusion
+
+In this guide, we've discussed how to type React components with TypeScript. We started with a basic example of a card component, and then gradually added more complexity, such as optional props, default props, state, and children. We also introduced the `React.FC` type for defining function components.
+
+TypeScript provides a powerful way to bring static typing to your React components, leading to more robust and maintainable code.

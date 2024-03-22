@@ -1,0 +1,31 @@
+---
+import NewsletterSubscribe from "@components/NewsletterSubscribe";
+import LinkedIn from "@components/icons/LinkedIn.astro";
+import X from "@components/icons/X.astro";
+---
+
+<NewsletterSubscribe client:visible />
+<section class="pb-5 lg:pb-32">
+  <div class="container">
+    <div class="flex justify-center gap-4">
+      <a
+        class="transition-colors hover:text-accent-purple"
+        href="https://linkedin.com/in/rob-cipolla"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="sr-only">LinkedIn profile link</span>
+        <LinkedIn class="h-10 w-10" />
+      </a>
+      <a
+        class="transition-colors hover:text-accent-purple"
+        href="https://twitter.com/robcipolla"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="sr-only">X/Twitter link</span>
+        <X class="h-10 w-10" />
+      </a>
+    </div>
+  </div>
+</section>

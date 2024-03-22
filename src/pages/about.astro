@@ -1,0 +1,218 @@
+---
+import SiteLayout from "@layouts/SiteLayout.astro";
+import aboutImage from "@assets/profile-about-page.webp";
+import { Image } from "astro:assets";
+import TimelineContainer from "@components/TimelineContainer.astro";
+import TimelineItem from "@components/TimelineItem.astro";
+
+const yearsExperience = new Date().getFullYear() - 2016;
+---
+
+<SiteLayout
+  title="About Rob Cipolla | Full Stack Web Developer & Designer"
+  description={`Meet Rob, a self-taught developer, designer, and digital strategist with ${yearsExperience}+ years of experience. Explore his journey and tech stack.`}
+  ogImage="/og/about.png"
+>
+  <section class="bg-hero-gradient">
+    <div
+      class="container flex flex-col space-y-24 py-28 text-white lg:space-y-0 lg:pb-20 lg:pt-40"
+    >
+      <h1 class="mb-6 text-2xl font-semibold sm:text-5xl">About Rob Cipolla</h1>
+    </div>
+  </section>
+  <div class="container">
+    <div class="prose mx-auto max-w-3xl py-8">
+      <h2>Contents</h2>
+      <ul>
+        <li>
+          <a href="#top">Introduction</a>
+        </li>
+        <li>
+          <a href="#how-i-got-here">How I got here</a>
+        </li>
+        <li>
+          <a href="#experience">Experience</a>
+        </li>
+        <li>
+          <a href="#education">Education</a>
+        </li>
+      </ul>
+      <h2>Introduction</h2>
+      <p id="top">
+        <strong>
+          Hey I&apos;m Rob, I&apos;m a self-taught fullstack developer, designer
+          and digital strategist with over {yearsExperience} years industry experience.
+          I have a passion for creating modern, clean and user&ndash;friendly websites
+          and applications.
+        </strong>
+      </p>
+      <Image loading="eager" src={aboutImage} alt="Rob" />
+      <h2 id="how-i-got-here">How I got here</h2>
+      <p>
+        Interestingly, I didn't initially see myself in development. Post-high
+        school, I pursued a Game Design BTEC covering various aspects like
+        concept art, scriptwriting, 3D modeling, and level design, with a brief
+        encounter with Game Maker software—no coding involved. My journey took
+        me to DeMontfort University for Game Art Design, focusing more on art
+        and 3D modeling. However, my passion for gaming waned, leading me to
+        switch to a Graphic Design and E-media course offered by Leicester
+        College and De Montfort University. It was here that web development and
+        design piqued my interest, especially when I had to incorporate
+        JavaScript to make accordions work in a website project—igniting my
+        fascination with web development.
+      </p>
+      <p>
+        Progressing, I completed the Graphic Design & E-media course, followed
+        by a Professional Studies year in the Creative Industries, where I honed
+        skills in creative business management, marketing, branding, and more,
+        earning a First Class Honours. My career began at a Web Design and SEO
+        company, developing custom WordPress themes for small businesses, which
+        paved the way to diverse projects, clients, and programming languages,
+        enhancing my ability to create websites and apps.
+      </p>
+      <h2 id="experience">Experience</h2>
+      <TimelineContainer>
+        <TimelineItem
+          title="Web developer"
+          date="June 2023 - Current"
+          company="Locale"
+          year="2024"
+        >
+          <p>
+            I joined Locale as a full stack developer with a focus on React
+            development, working to improve, maintain and develop legacy and new
+            features.
+          </p>
+          <p>Technology used:</p>
+          <ul>
+            <li>React</li>
+            <li>Node.js</li>
+            <li>PHP</li>
+            <li>Laravel</li>
+            <li>MySQL/MariaDB</li>
+            <li>Docker</li>
+          </ul>
+        </TimelineItem>
+        <TimelineItem
+          title="Head of Web"
+          date="Sep 2019 - June 2023"
+          company="Reach Marketing Communications"
+          year="2023"
+        >
+          <p>
+            During my tenure, I was responsible for overseeing the project
+            lifecycle, from initiation and development to the enhancement and
+            maintenance of the company's websites. I successfully mentored
+            junior developers, elevating their expertise to an advanced level.
+            My introduction of project management tools, such as Trello, and the
+            integration of GIT version control significantly improved our
+            operational workflows. I led the strategic transition of our hosting
+            services from traditional servers to AWS for our legacy WordPress
+            sites, and was pivotal in shifting the company's development focus
+            to JAMstack style websites, utilizing cutting-edge technologies like
+            Next.js, Astro, Node, and Netlify hosting. Leveraging my graphic and
+            web design expertise, I also trained our designers in UI/UX
+            fundamentals, ensuring our web designs adhered to the highest
+            standards and best practices of the industry.
+          </p>
+          <p>Technology used:</p>
+          <ul>
+            <li>React</li>
+            <li>Node.js</li>
+            <li>PHP</li>
+            <li>MySQL/MariaDB</li>
+            <li>Docker</li>
+            <li>Next.js</li>
+            <li>Astro</li>
+            <li>Netlify</li>
+            <li>AWS</li>
+            <li>TailwindCSS</li>
+            <li>SCSS</li>
+            <li>Webpack</li>
+            <li>Adobe Creative Suite</li>
+            <li>WordPress</li>
+            <li>JavaScript/TypeScript</li>
+          </ul>
+        </TimelineItem>
+        <TimelineItem
+          title="Web designer / developer"
+          date="Nov 2017 - Jul 2019"
+          company="Success Local Limited"
+          year="2017"
+        >
+          <p>
+            At Success Load Limited, I was an integral part of a nimble team of
+            designer/developers, where we specialized in crafting
+            marketing-centric WordPress websites. During my stint, I not only
+            honed my skills in PHP, Adobe Creative Suite, CSS, HTML, JavaScript,
+            WordPress, and Git but also imparted advanced JavaScript knowledge
+            to my peers, greatly enhancing the feature set and interactivity of
+            our web projects. My proactive approach led to the adoption of GIT
+            version control with Bitbucket across our workflows, streamlining
+            our development processes. I frequently took on dual roles,
+            shepherding websites from their initial wireframe stage to the final
+            production build, which allowed me to showcase a full spectrum of
+            design and development expertise.
+          </p>
+          <p>Technology used:</p>
+          <ul>
+            <li>PHP</li>
+            <li>MySQL/MariaDB</li>
+            <li>Docker</li>
+            <li>WordPress</li>
+            <li>Adobe Creative Suite</li>
+            <li>SCSS</li>
+            <li>JavaScript/jQuery</li>
+          </ul>
+        </TimelineItem>
+        <TimelineItem
+          title="Web designer / developer"
+          date="Nov 2017 - Jul 2019"
+          company="Rob Cipolla Design"
+          year="2015"
+          last
+        >
+          <p>
+            After university, I embraced the entrepreneurial spirit as a
+            Freelance Web Designer, whilst working part time, focusing on web
+            design and WordPress theme building. I applied my proficiency in
+            Adobe Creative Suite and WordPress to deliver tailored web
+            solutions. Notably, I forged a collaborative link with my
+            university, receiving referrals from a former course leader to
+            assist current students in creating and refining their personal
+            portfolio websites.
+          </p>
+          <p>Technology used:</p>
+          <ul>
+            <li>PHP</li>
+            <li>MySQL/MariaDB</li>
+            <li>WordPress</li>
+            <li>Adobe Creative Suite</li>
+            <li>CSS</li>
+            <li>JavaScript/jQuery</li>
+          </ul>
+        </TimelineItem>
+      </TimelineContainer>
+      <h2 id="education">Education</h2>
+      <p><strong>De Montfort University</strong></p>
+      <p>
+        Undergraduate Degree (1st Class Honours) BA Professional Studies
+        (Creative Industries)
+      </p>
+      <ul>
+        <li>
+          Worked with Leicester University to create a marketing campaign to
+          help with racism in Leicester
+        </li>
+        <li>
+          Worked with various different creatives from different backgrounds
+          such as photography, fashion, design and development
+        </li>
+        <li>
+          Entered the course from a Graphic Design and E-Media Foundation
+          Degree.
+        </li>
+      </ul>
+    </div>
+  </div>
+</SiteLayout>

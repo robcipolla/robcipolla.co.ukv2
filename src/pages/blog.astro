@@ -1,0 +1,53 @@
+---
+import Calendar from "@components/icons/Calendar.astro";
+import SiteLayout from "@layouts/SiteLayout.astro";
+import { getCollection } from "astro:content";
+import { compareDesc, format } from "date-fns";
+
+const posts = await getCollection("blog");
+
+const orderedPosts = posts.sort((a, b) => {
+  return compareDesc(new Date(a.data.date), new Date(b.data.date));
+});
+---
+
+<SiteLayout
+  title="Blog | Full Stack Developer & Designer"
+  description="Welcome to my blog, where I write about web development and UI/UX design, providing tips, tricks and insights into modern web development"
+>
+  <section class="bg-hero-gradient">
+    <div
+      class="container flex flex-col py-28 text-white lg:space-y-0 lg:pb-20 lg:pt-40"
+    >
+      <h1 class="mb-6 text-5xl font-semibold">Blog</h1>
+      <p>
+        I write about web development and UI/UX design, providing tips, tricks
+        and insights into modern web development
+      </p>
+    </div>
+  </section>
+  <section>
+    <div class="container py-12">
+      <div class="mx-auto grid grid-cols-12 gap-x-6 gap-y-8">
+        {
+          orderedPosts.map((post) => (
+            <article class="col-span-12 flex flex-col justify-between rounded-lg bg-white px-9 py-8 shadow-lg lg:col-span-4">
+              <div class="space-y-4">
+                <h3 class="text-lg font-semibold">{post.data.title}</h3>
+                <div class="flex space-x-2.5">
+                  <Calendar class="h-5 w-5" />
+                  <span>Posted: {format(post.data.date, "dd/MM/yyy")}</span>
+                </div>
+              </div>
+              <div class="pt-6">
+                <a class="btn" href={`/blog/${post.slug}`}>
+                  Read this post
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</SiteLayout>

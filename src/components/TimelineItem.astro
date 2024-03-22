@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  date: string;
+  company: string;
+  year: string;
+  last?: boolean;
+}
+
+const { title, date, company, year, last } = Astro.props;
+---
+
+<div class="relative mb-8 flex">
+  <div
+    class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-accent-purple text-white"
+  >
+    {year}
+  </div>
+  <div
+    class=`absolute left-6 top-12 border-l-2 border-dotted border-accent-purple/50 ${last ? 'h-[85%]' : 'h-full'}`
+  >
+  </div>
+  <div class="timeline-content ml-4 md:ml-8">
+    <div class="text-sm font-semibold text-accent-purple">
+      {date}
+    </div>
+    <div class="text-lg font-bold text-gray-900">{title}, {company}</div>
+    <slot />
+  </div>
+</div>

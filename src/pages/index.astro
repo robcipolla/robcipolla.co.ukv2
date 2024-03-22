@@ -1,16 +1,143 @@
 ---
+import profileImage from "@assets/circle-profile-pic.webp";
+import aboutImage from "@assets/profile-picture-home.webp";
+import Calendar from "@components/icons/Calendar.astro";
+import Newsletter from "@components/sections/Newsletter.astro";
+import WhatPeopleSay from "@components/sections/WhatPeopleSay.astro";
+import SiteLayout from "@layouts/SiteLayout.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import { compareDesc, format } from "date-fns";
 
+const yearsExperience = new Date().getFullYear() - 2016;
+
+const posts = await getCollection("blog");
+const orderedPosts = posts.sort((a, b) =>
+  compareDesc(new Date(a.data.date), new Date(b.data.date))
+);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<SiteLayout
+  title="Rob Cipolla | Full Stack Developer & Designer"
+  description="I'm a full stack developer and designer based in the United Kingdom. I'm passionate about building and designing modern, accessible, and performant web applications."
+>
+  <!-- Hero section -->
+  <section class="bg-hero-gradient">
+    <div
+      class="container flex flex-col space-y-24 py-28 md:flex-row lg:space-y-0 lg:pb-44 lg:pt-48"
+    >
+      <div class="max-w-xl text-white md:max-w-[50%] lg:max-w-xl">
+        <p class="mb-2.5 font-bold lg:text-lg">My name is Rob Cipolla</p>
+        <h1 class="mb-6 text-2xl font-semibold sm:text-5xl">
+          Full-stack web developer and designer
+        </h1>
+        <p class="mb-4">
+          I specialise in user-centric applications. I use technology to drive
+          change, always staying ahead of the curve. Besides work, I'm
+          passionate about knowledge sharing and continuous learning, inspiring
+          others in tech.
+        </p>
+        <p>
+          Currently working with a talented team of developers at <a
+            href="https://locale.co.uk">Locale</a
+          >.
+        </p>
+        <div class="flex space-x-4 pt-8">
+          <a class="btn" href="/about">About me</a>
+          <a class="btn bg-white text-raisin-black" href="/blog">Blog</a>
+        </div>
+      </div>
+      <div class="flex md:grow md:items-center md:justify-center">
+        <div class="relative">
+          <div
+            class="absolute -right-6 -top-9 aspect-square w-56 rounded-full bg-primary-teal blur-[58px]"
+          >
+          </div>
+          <div
+            class="absolute -bottom-4 -left-4 aspect-square w-32 rounded-full bg-accent-purple blur-[58px]"
+          >
+          </div>
+          <Image
+            class="relative"
+            loading="eager"
+            src={profileImage}
+            alt="Rob Cipolla professional in an office environment"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent posts -->
+  <section>
+    <div class="container py-12">
+      <h2 class="mb-11 text-center text-3xl font-bold">Recent Posts</h2>
+      <div class="justify-between space-y-8 lg:flex lg:space-y-0">
+        {
+          orderedPosts.slice(0, 3).map((post) => (
+            <article class="flex flex-col justify-between rounded-lg bg-white px-9 py-8 shadow-lg lg:max-w-72">
+              <div class="space-y-4">
+                <h3 class="text-lg font-semibold">{post.data.title}</h3>
+                <div class="flex space-x-2.5">
+                  <Calendar class="h-5 w-5" />
+                  <span>Posted: {format(post.data.date, "dd/MM/yyy")}</span>
+                </div>
+              </div>
+              <div class="pt-6">
+                <a class="btn" href={`/blog/${post.slug}`}>
+                  Read this post
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Sign up to news letter -->
+  <Newsletter />
+
+  <!-- About me -->
+  <section class="bg-white py-16">
+    <div class="container grid items-center gap-4 lg:grid-cols-2">
+      <div class="prose">
+        <h2 class="underline-heading">About me</h2>
+        <p class="text-lg">
+          <strong>
+            Hey I&apos;m Rob, I&apos;m a fullstack developer, designer and
+            digital strategist with over {yearsExperience} years industry experience.
+            I have a passion for creating modern, clean and user-friendly websites
+            and applications.
+          </strong>
+        </p>
+        <p>
+          I have a wide range of experience both building marketing websites and
+          applications across different technology stacks, in addition, my
+          background working for various types of clientele, ranging from
+          national property developers, the financial industry and SMEs, has
+          given me the ability to adapt to my environment.
+        </p>
+        <p>
+          I have a keen interest in designing and developing flexible design
+          systems and well tested robust backends for projects backed by
+          thorough research and planning.
+        </p>
+        <p>Want to know more? Visit my about page using the link below!</p>
+        <div>
+          <a class="btn no-underline" href="/about">Learn more about Me</a>
+        </div>
+      </div>
+      <div>
+        <Image
+          class="rounded-lg"
+          src={aboutImage}
+          alt="Rob Cipolla professional in an office environment"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommendations -->
+  <WhatPeopleSay />
+</SiteLayout>

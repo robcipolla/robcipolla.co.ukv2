@@ -1,0 +1,22 @@
+---
+import SiteLayout from "@layouts/SiteLayout.astro";
+---
+
+<SiteLayout title="Page not found" description="Page not found">
+  <section class="bg-hero-gradient">
+    <div
+      class="container flex flex-col space-y-24 py-28 text-white lg:space-y-0 lg:pb-20 lg:pt-40"
+    >
+      <h1 class="mb-6 text-2xl font-semibold sm:text-5xl">Page not found!</h1>
+      <div class="flex space-x-4 text-white">
+        <p class="pt-4">The page you are looking for doesn't exist.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <a class="btn mt-8 inline-block no-underline" href="/">
+      &LeftArrow; Go back home
+    </a>
+  </div>
+</SiteLayout>

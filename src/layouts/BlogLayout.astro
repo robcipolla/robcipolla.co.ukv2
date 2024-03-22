@@ -1,0 +1,60 @@
+---
+import Calendar from "@components/icons/Calendar.astro";
+import Clock from "@components/icons/Clock.astro";
+import Newsletter from "@components/sections/Newsletter.astro";
+import SiteLayout from "@layouts/SiteLayout.astro";
+import { format } from "date-fns";
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    date: Date;
+    excerpt: string;
+    readingTime: number;
+  };
+  slug: string;
+}
+
+const { frontmatter, slug } = Astro.props;
+const postedAt = format(frontmatter.date, "MMMM dd, yyyy");
+---
+
+<SiteLayout
+  title={`${frontmatter.title} | Rob Cipolla`}
+  description={frontmatter.description}
+  ogImage={`${slug}/og.png`}
+  type="article"
+>
+  <section class="bg-hero-gradient">
+    <div
+      class="container flex flex-col py-28 text-white lg:space-y-0 lg:pb-20 lg:pt-40"
+    >
+      <h1 class="mb-6 text-2xl font-semibold sm:text-5xl">
+        {frontmatter.title}
+      </h1>
+      <div class="flex space-x-4 text-white">
+        <span class="flex items-center space-x-2.5">
+          <Calendar class="h-6 w-6" />
+          <span>Posted: {postedAt}</span>
+        </span>
+        <span class="flex items-center space-x-2.5">
+          <Clock class="h-6 w-6" />
+          <span>Estimated reading time: {frontmatter.readingTime} mins</span>
+        </span>
+      </div>
+      <p class="pt-4">{frontmatter.excerpt}</p>
+    </div>
+  </section>
+  <article class="container">
+    <div class="prose mx-auto max-w-3xl py-8">
+      <slot />
+      <div>
+        <a href="/blog" class="btn no-underline">
+          &larr; Back to blog archive</a
+        >
+      </div>
+    </div>
+    <Newsletter />
+  </article>
+</SiteLayout>

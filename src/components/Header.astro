@@ -1,0 +1,208 @@
+---
+import Logo from "@components/Logo.astro";
+import LinkedIn from "@components/icons/LinkedIn.astro";
+import X from "@components/icons/X.astro";
+import Envelope from "@components/icons/Envelope.astro";
+import Menu from "@components/icons/Menu.astro";
+import CloseMenu from "@components/icons/CloseMenu.astro";
+
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Blog", href: "/blog" },
+];
+---
+
+<header
+  transition:persist
+  class="fixed top-0 z-50 mx-auto flex w-full justify-between px-2.5 py-2 transition-all duration-300 lg:container lg:inset-x-0 lg:top-8 lg:rounded-lg"
+>
+  <div class="flex items-center space-x-8">
+    <a id="header-logo" class="transition-opacity hover:opacity-60" href="/">
+      <span class="sr-only">Home Link</span>
+      <Logo variant="light" />
+    </a>
+    <nav class="hidden lg:block">
+      <ul class="flex space-x-4">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                class="text-white transition-colors duration-300 hover:!text-primary-purple"
+                href={link.href}
+              >
+                {link.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+  <div id="right-side" class="flex items-center space-x-4">
+    <a
+      class="hidden transition-opacity hover:opacity-60 lg:inline"
+      href="https://www.linkedin.com/in/rob-cipolla"
+      target="_blank"
+    >
+      <span class="sr-only">LinkedIn Link</span>
+      <LinkedIn class="h-6 w-6" />
+    </a>
+    <a
+      class="hidden transition-opacity hover:opacity-60 lg:inline"
+      href="https://www.linkedin.com/in/rob-cipolla"
+      target="_blank"
+    >
+      <span class="sr-only">Twitter/X</span>
+      <X class="h-6 w-6" />
+    </a>
+    <a
+      aria-label="Get in touch"
+      id="contact-button"
+      class="btn"
+      href="/contact"
+    >
+      <Envelope className="h-6 w-6 lg:hidden" />
+      <span class="hidden lg:inline">Get in touch</span>
+    </a>
+    <button
+      class="rounded-lg bg-off-white px-3 py-2.5 text-raisin-black lg:hidden"
+      aria-label="Open menu"
+    >
+      <Menu id="open-menu-icon" class="h-6 w-6" />
+      <CloseMenu id="close-menu-icon" class="hidden h-6 w-6" />
+    </button>
+  </div>
+</header>
+
+<nav
+  id="mobile-menu"
+  class="pointer-events-none fixed top-0 z-40 flex h-screen w-screen flex-col items-center bg-white/75 pt-20 text-center text-raisin-black opacity-0 backdrop-blur-sm transition-all duration-200 lg:!hidden"
+>
+  <ul class="flex flex-col space-y-4">
+    {
+      navLinks.map((link) => (
+        <li>
+          <a class="text-4xl" href={link.href}>
+            {link.name}
+          </a>
+        </li>
+      ))
+    }
+    <li class="pt-4">
+      <a class="btn" href="/contact"> Get in touch </a>
+    </li>
+  </ul>
+  <div class="flex items-center justify-center space-x-2.5 pt-8">
+    <a
+      class="transition-opacity hover:opacity-60"
+      href="https://www.linkedin.com/in/rob-cipolla"
+      target="_blank"
+    >
+      <span class="sr-only">LinkedIn Link</span>
+      <LinkedIn class="h-6 w-6" />
+      <a
+        class="transition-opacity hover:opacity-60"
+        href="https://www.linkedin.com/in/rob-cipolla"
+        target="_blank"
+      >
+        <span class="sr-only">Twitter/X</span>
+        <X class="h-6 w-6" />
+      </a>
+    </a>
+  </div>
+</nav>
+
+<style>
+  .header-scrolled {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+  }
+
+  .header-scrolled a {
+    color: #2c2c34;
+  }
+
+  .header-scrolled :global(svg path) {
+    fill: #2c2c34;
+  }
+
+  #right-side :global(svg path) {
+    fill: #fff;
+  }
+
+  #right-side button :global(svg path) {
+    fill: #2c2c34;
+  }
+
+  .header-scrolled #right-side :global(svg path) {
+    fill: #2c2c34;
+  }
+
+  .header-scrolled #contact-button {
+    color: #fff;
+  }
+
+  .header-scrolled #contact-button :global(svg path) {
+    fill: #fff;
+  }
+
+  .header-scrolled button {
+    outline: 1px solid #2c2c34;
+  }
+
+  .mobile-menu-open #header-logo :global(svg path) {
+    fill: #2c2c34;
+  }
+
+  .mobile-menu-open #right-side button {
+    outline: 1px solid #2c2c34;
+  }
+
+  .mobile-menu-open.header-scrolled {
+    background-color: inherit;
+    box-shadow: none;
+  }
+</style>
+
+<script is:inline>
+  const header = document.querySelector("header");
+  let menuOpen = false;
+
+  function headerScroll() {
+    if (header) {
+      header.classList.toggle("header-scrolled", window.scrollY > 0);
+      console.log("SCROLLING");
+    }
+  }
+
+  function toggleMenu() {
+    const openMenuIcon = document.getElementById("open-menu-icon");
+    const closeMenuIcon = document.getElementById("close-menu-icon");
+    const body = document.getElementsByTagName("body")[0];
+    const menu = document.getElementById("mobile-menu");
+
+    if (header) {
+      header.classList.toggle("mobile-menu-open");
+    }
+
+    openMenuIcon?.classList.toggle("hidden");
+    closeMenuIcon?.classList.toggle("hidden");
+    body?.classList?.toggle("overflow-hidden");
+
+    if (menu) {
+      menu.style.opacity = menuOpen ? "0" : "1";
+      menu.style.pointerEvents = menuOpen ? "none" : "all";
+    }
+
+    menuOpen = !menuOpen;
+  }
+</script>
+
+<script is:inline data-astro-rerun>
+  document.querySelector("button")?.addEventListener("click", toggleMenu);
+
+  window.addEventListener("scroll", headerScroll);
+  window.addEventListener("load", headerScroll);
+  console.log("WORKING");
+</script>

@@ -1,0 +1,42 @@
+---
+import SiteLayout from "@layouts/SiteLayout.astro";
+import ContactForm from "@components/ContactForm";
+---
+
+<SiteLayout
+  title="Contact Me | Full Stack Developer & Designer"
+  description="Get in touch with me via my contact form or email address listed on this page"
+  ogImage="/og/contact.png"
+>
+  <section class="bg-hero-gradient">
+    <div
+      class="container flex flex-col py-28 text-white lg:space-y-0 lg:pb-20 lg:pt-40"
+    >
+      <h1 class="mb-6 text-5xl font-semibold">Contact</h1>
+    </div>
+  </section>
+  <section class="py-16">
+    <div class="container">
+      <div class="prose flex flex-col space-y-4 lg:w-1/2">
+        <p>
+          I'm always open to new opportunities and collaborations. If you have a
+          project in mind, or just want to say hi, feel free to reach out.
+        </p>
+        <p>
+          You can contact me via email at
+          <a
+            href="mailto:hello@robcipolla.co.uk"
+            class="text-accent-purple hover:underline"
+          >
+            hello@robcipolla.co.uk
+          </a>
+          , or by filling out the form below.
+        </p>
+        <ContactForm
+          client:visible
+          formId={import.meta.env.FORMSPREE_FORM_ID}
+        />
+      </div>
+    </div>
+  </section>
+</SiteLayout>
