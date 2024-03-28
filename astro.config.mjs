@@ -25,5 +25,7 @@ export default defineConfig({
   },
   integrations: [tailwind(), partytown(), sitemap(), mdx(), react()],
   output: "server",
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: { enabled: true },
+  }),
 });
