@@ -5,6 +5,7 @@ import X from "@components/icons/X.astro";
 import Envelope from "@components/icons/Envelope.astro";
 import Menu from "@components/icons/Menu.astro";
 import CloseMenu from "@components/icons/CloseMenu.astro";
+import Github from "./icons/Github.astro";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -57,6 +58,14 @@ const navLinks = [
       <X class="h-6 w-6" />
     </a>
     <a
+      class="hidden transition-opacity hover:opacity-60 lg:inline"
+      href="https://github.com/robcipolla"
+      target="_blank"
+    >
+      <span class="sr-only">Astro</span>
+      <Github class="h-6 w-6" />
+    </a>
+    <a
       aria-label="Get in touch"
       id="contact-button"
       class="btn"
@@ -101,14 +110,22 @@ const navLinks = [
     >
       <span class="sr-only">LinkedIn Link</span>
       <LinkedIn class="h-6 w-6" />
-      <a
-        class="transition-opacity hover:opacity-60"
-        href="https://www.linkedin.com/in/rob-cipolla"
-        target="_blank"
-      >
-        <span class="sr-only">Twitter/X</span>
-        <X class="h-6 w-6" />
-      </a>
+    </a>
+    <a
+      class="transition-opacity hover:opacity-60"
+      href="https://www.linkedin.com/in/rob-cipolla"
+      target="_blank"
+    >
+      <span class="sr-only">Twitter/X</span>
+      <X class="h-6 w-6" />
+    </a>
+    <a
+      class="transition-opacity hover:opacity-60"
+      href="https://github.com/robcipolla"
+      target="_blank"
+    >
+      <span class="sr-only">Astro</span>
+      <Github class="h-6 w-6" />
     </a>
   </div>
 </nav>
