@@ -1,6 +1,16 @@
 import type { ReactElement } from "react";
 
-export const createOGEReactElement = (title: string): ReactElement => {
+/**
+ * Create a React element for the Open Graph image
+ *
+ * @param title Title for the Open graph image
+ * @param isBlog Is for a blog page
+ * @returns {ReactElement} React element for the Open Graph image
+ */
+export const createOGEReactElement = (
+  title: string,
+  isBlog = true,
+): ReactElement => {
   return {
     type: "div",
     key: "og-image",
@@ -79,7 +89,7 @@ export const createOGEReactElement = (title: string): ReactElement => {
                 type: "div",
                 props: {
                   tw: "text-3xl text-white",
-                  children: "Blog",
+                  children: isBlog ? "Blog" : "Personal Website",
                 },
               },
             ],
