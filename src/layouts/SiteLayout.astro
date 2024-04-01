@@ -2,6 +2,7 @@
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
   title: string;
@@ -15,6 +16,7 @@ const { title, description, ogImage, type = "website" } = Astro.props;
 
 <html lang="en" class="scroll-smooth lg:scroll-pt-[100px]">
   <head>
+    <SpeedInsights />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
