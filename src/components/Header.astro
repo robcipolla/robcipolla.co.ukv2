@@ -189,7 +189,6 @@ const navLinks = [
   function headerScroll() {
     if (header) {
       header.classList.toggle("header-scrolled", window.scrollY > 0);
-      console.log("SCROLLING");
     }
   }
 
@@ -221,5 +220,4 @@ const navLinks = [
 
   window.addEventListener("scroll", headerScroll);
   window.addEventListener("load", headerScroll);
-  console.log("WORKING");
 </script>

@@ -18,8 +18,6 @@ export const POST: APIRoute = async ({ request }) => {
       throw new Error("Please provide an email");
     }
 
-    console.log(import.meta.env.CONVERT_KIT_SECRET_KEY);
-
     // check if the email is already subscribed
     const subRes = await fetch(
       `https://api.convertkit.com/v3/subscribers?api_secret=${
@@ -28,7 +26,6 @@ export const POST: APIRoute = async ({ request }) => {
     );
 
     if (!subRes.ok) {
-      console.log("subRes", subRes);
       throw new Error("Big Yikes!");
     }
 
