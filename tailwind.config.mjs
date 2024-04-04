@@ -17,7 +17,7 @@ export default {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            "p a": {
+            "p a, li a": {
               color: theme("colors.accent-purple"),
               fontWeight: theme("fontWeight.semibold"),
             },
