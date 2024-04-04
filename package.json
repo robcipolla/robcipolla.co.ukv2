@@ -23,11 +23,13 @@
     "@vercel/speed-insights": "^1.0.10",
     "astro": "^4.5.8",
     "date-fns": "^3.6.0",
+    "detect-libc": "^2.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "rehype-external-links": "^3.0.0",
     "remark-toc": "^9.0.0",
+    "sharp": "^0.33.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.4.2"
   },
@@ -36,7 +38,6 @@
     "@tailwindcss/typography": "^0.5.10",
     "@types/react": "^18.2.71",
     "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.12",
-    "sharp": "0.33.0"
+    "prettier-plugin-tailwindcss": "^0.5.12"
   }
 }
