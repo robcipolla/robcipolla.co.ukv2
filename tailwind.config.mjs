@@ -14,6 +14,16 @@ export default {
       },
     },
     extend: {
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            "p a": {
+              color: theme("colors.accent-purple"),
+              fontWeight: theme("fontWeight.semibold"),
+            },
+          },
+        },
+      }),
       backgroundImage: {
         "hero-gradient":
           "linear-gradient(to bottom, rgb(50,54,98), rgb(30,30,30))",
