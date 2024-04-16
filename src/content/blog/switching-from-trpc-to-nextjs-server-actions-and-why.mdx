@@ -43,17 +43,11 @@ export default function Page() {
 }
 ```
 
-Or you can even use server actions inside "client components" by writing your server action function inside a separate file, however instead of the `"use server"` directive, you can import a package, aptly named "server-only" so that the file is only ever run on the server. It can be installed using your favorite package manager:
-
-```bash
-bun install server-only # using bun because I am cool like that
-```
-
-Then you can import and use the server action in your client component like so:
+Or you can even use server actions inside "client components" by writing your server action function inside a separate file placing the `"use server"` directive at the top of the file. Then you can import the function into your client component and use it like so:
 
 ```ts
 // src/app/actions.ts
-import "server-only";
+"use server"
  
 export async function create() {
   // ...
