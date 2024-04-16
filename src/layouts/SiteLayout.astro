@@ -36,7 +36,11 @@ const { title, description, ogImage, type = "website" } = Astro.props;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta
+      name="twitter:image"
+      content={`https://www.robcipolla.co.uk/${ogImage}`}
+    />
+    <meta property="twitter:domain" content="robcipolla.co.uk" />
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
