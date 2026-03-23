@@ -55,7 +55,7 @@ const { title, description, ogImage, type = "website" } = Astro.props;
     <Font cssVariable="--font-dm-sans" />
     <Font cssVariable="--font-dm-mono" />
 
-    <ClientRouter fallback="swap" />
+    <ClientRouter />
   </head>
   <body class="flex min-h-screen flex-col bg-parchment">
     <Header />
