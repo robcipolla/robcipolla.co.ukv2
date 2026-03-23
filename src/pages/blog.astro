@@ -50,7 +50,7 @@ const orderedPosts = posts.sort((a, b) => {
             <article class="group relative flex flex-col justify-between rounded-lg border border-rule bg-chalk p-7 transition-all duration-300 hover:border-dusk/40">
 
               <!-- Ghost numeral -->
-              <span class="pointer-events-none absolute right-5 top-4 select-none font-serif text-[4rem] leading-none text-rule/40">
+              <span class="pointer-events-none absolute right-5 top-4 select-none font-serif text-7xl leading-none text-rule/40">
                 {String(i + 1).padStart(2, "0")}
               </span>
 
@@ -70,7 +70,7 @@ const orderedPosts = posts.sort((a, b) => {
 
               <div class="pt-7">
                 <a
-                  class="inline-flex items-center gap-1.5 text-[13px] font-medium text-ink transition-colors group-hover:text-ember"
+                  class="inline-flex items-center gap-1.5 text-sm font-medium text-ink transition-colors group-hover:text-ember"
                   href={`/blog/${post.id}`}
                 >
                   Read post
