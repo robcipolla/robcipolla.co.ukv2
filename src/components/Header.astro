@@ -15,21 +15,23 @@ const navLinks = [
 ---
 
 <header
-  transition:persist
-  class="fixed top-0 z-50 mx-auto flex w-full justify-between px-2.5 py-2 transition-all duration-300 lg:container lg:inset-x-0 lg:top-8 lg:rounded-lg"
+  class="fixed top-0 z-50 w-full transition-all duration-500"
 >
-  <div class="flex items-center space-x-8">
-    <a id="header-logo" class="transition-opacity hover:opacity-60" href="/">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5 lg:px-8">
+    <!-- Logo -->
+    <a id="header-logo" class="relative z-10 transition-opacity duration-300 hover:opacity-60" href="/">
       <span class="sr-only">Home Link</span>
       <Logo variant="light" />
     </a>
-    <nav class="hidden lg:block">
-      <ul class="flex space-x-4">
+
+    <!-- Desktop nav -->
+    <nav class="hidden items-center gap-10 lg:flex">
+      <ul class="flex items-center gap-8">
         {
           navLinks.map((link) => (
             <li>
               <a
-                class="text-white transition-colors duration-300 hover:!text-primary-purple"
+                class="text-[13px] font-medium tracking-wide text-chalk/70 transition-colors duration-300 hover:text-chalk"
                 href={link.href}
               >
                 {link.name}
@@ -38,147 +40,218 @@ const navLinks = [
           ))
         }
       </ul>
+
+      <span class="h-4 w-px bg-chalk/15"></span>
+
+      <div class="flex items-center gap-3">
+        <a
+          class="text-chalk/40 transition-colors duration-300 hover:text-chalk/80"
+          href="https://www.linkedin.com/in/rob-cipolla"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="sr-only">LinkedIn</span>
+          <LinkedIn class="h-4 w-4" />
+        </a>
+        <a
+          class="text-chalk/40 transition-colors duration-300 hover:text-chalk/80"
+          href="https://twitter.com/robcipolla"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="sr-only">Twitter/X</span>
+          <X class="h-4 w-4" />
+        </a>
+        <a
+          class="text-chalk/40 transition-colors duration-300 hover:text-chalk/80"
+          href="https://github.com/robcipolla"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="sr-only">GitHub</span>
+          <Github class="h-4 w-4" />
+        </a>
+      </div>
+
+      <a
+        id="contact-button"
+        class="rounded border border-chalk/20 px-4 py-2 text-[13px] font-medium text-chalk/80 transition-all duration-300 hover:border-chalk/50 hover:text-chalk"
+        href="/contact"
+      >
+        Get in touch
+      </a>
     </nav>
-  </div>
-  <div id="right-side" class="flex items-center space-x-4">
-    <a
-      class="hidden transition-opacity hover:opacity-60 lg:inline"
-      href="https://www.linkedin.com/in/rob-cipolla"
-      target="_blank"
-    >
-      <span class="sr-only">LinkedIn Link</span>
-      <LinkedIn class="h-6 w-6" />
-    </a>
-    <a
-      class="hidden transition-opacity hover:opacity-60 lg:inline"
-      href="https://www.linkedin.com/in/rob-cipolla"
-      target="_blank"
-    >
-      <span class="sr-only">Twitter/X</span>
-      <X class="h-6 w-6" />
-    </a>
-    <a
-      class="hidden transition-opacity hover:opacity-60 lg:inline"
-      href="https://github.com/robcipolla"
-      target="_blank"
-    >
-      <span class="sr-only">Astro</span>
-      <Github class="h-6 w-6" />
-    </a>
-    <a
-      aria-label="Get in touch"
-      id="contact-button"
-      class="btn"
-      href="/contact"
-    >
-      <Envelope className="h-6 w-6 lg:hidden" />
-      <span class="hidden lg:inline">Get in touch</span>
-    </a>
-    <button
-      class="rounded-lg bg-off-white px-3 py-2.5 text-raisin-black lg:hidden"
-      aria-label="Open menu"
-    >
-      <Menu id="open-menu-icon" class="h-6 w-6" />
-      <CloseMenu id="close-menu-icon" class="hidden h-6 w-6" />
-    </button>
+
+    <!-- Mobile controls -->
+    <div id="right-side" class="flex items-center gap-3 lg:hidden">
+      <a
+        aria-label="Get in touch"
+        id="mobile-contact"
+        class="rounded border border-chalk/20 p-2 text-chalk/70 transition-colors hover:text-chalk"
+        href="/contact"
+      >
+        <Envelope className="h-5 w-5" />
+      </a>
+      <button
+        class="rounded border border-chalk/20 p-2 text-chalk/70 transition-colors hover:text-chalk"
+        aria-label="Open menu"
+      >
+        <Menu id="open-menu-icon" class="h-5 w-5" />
+        <CloseMenu id="close-menu-icon" class="hidden h-5 w-5" />
+      </button>
+    </div>
   </div>
 </header>
 
+<!-- Mobile menu -->
 <nav
   id="mobile-menu"
-  class="pointer-events-none fixed top-0 z-40 flex h-screen w-screen flex-col items-center bg-white/75 pt-20 text-center text-raisin-black opacity-0 backdrop-blur-sm transition-all duration-200 lg:!hidden"
+  class="pointer-events-none fixed inset-0 z-40 flex flex-col items-center justify-center bg-nightfall/95 opacity-0 backdrop-blur-md transition-all duration-300 lg:!hidden"
 >
-  <ul class="flex flex-col space-y-4">
+  <ul class="flex flex-col items-center gap-6">
     {
       navLinks.map((link) => (
         <li>
-          <a class="text-4xl" href={link.href}>
+          <a class="font-serif text-3xl text-chalk/80 transition-colors hover:text-chalk" href={link.href}>
             {link.name}
           </a>
         </li>
       ))
     }
     <li class="pt-4">
-      <a class="btn" href="/contact"> Get in touch </a>
+      <a
+        class="rounded border border-chalk/20 px-6 py-3 text-sm font-medium text-chalk/80 transition-colors hover:border-chalk/50 hover:text-chalk"
+        href="/contact"
+      >
+        Get in touch
+      </a>
     </li>
   </ul>
-  <div class="flex items-center justify-center space-x-2.5 pt-8">
+  <div class="flex items-center gap-4 pt-10">
     <a
-      class="transition-opacity hover:opacity-60"
+      class="text-chalk/30 transition-colors hover:text-chalk/60"
       href="https://www.linkedin.com/in/rob-cipolla"
       target="_blank"
+      rel="noopener noreferrer"
     >
-      <span class="sr-only">LinkedIn Link</span>
-      <LinkedIn class="h-6 w-6" />
+      <span class="sr-only">LinkedIn</span>
+      <LinkedIn class="h-5 w-5" />
     </a>
     <a
-      class="transition-opacity hover:opacity-60"
-      href="https://www.linkedin.com/in/rob-cipolla"
+      class="text-chalk/30 transition-colors hover:text-chalk/60"
+      href="https://twitter.com/robcipolla"
       target="_blank"
+      rel="noopener noreferrer"
     >
       <span class="sr-only">Twitter/X</span>
-      <X class="h-6 w-6" />
+      <X class="h-5 w-5" />
     </a>
     <a
-      class="transition-opacity hover:opacity-60"
+      class="text-chalk/30 transition-colors hover:text-chalk/60"
       href="https://github.com/robcipolla"
       target="_blank"
+      rel="noopener noreferrer"
     >
-      <span class="sr-only">Astro</span>
-      <Github class="h-6 w-6" />
+      <span class="sr-only">GitHub</span>
+      <Github class="h-5 w-5" />
     </a>
   </div>
 </nav>
 
 <style>
   .header-scrolled {
-    background-color: rgba(255, 255, 255, 1);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+    background-color: rgba(244, 241, 236, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(214, 210, 203, 0.5);
   }
 
   .header-scrolled a {
-    color: #2c2c34;
+    color: #1A1814;
+  }
+
+  .header-scrolled nav a {
+    color: #6B6760;
+  }
+
+  .header-scrolled nav a:hover {
+    color: #1A1814;
   }
 
   .header-scrolled :global(svg path) {
-    fill: #2c2c34;
+    fill: #1A1814;
   }
 
-  #right-side :global(svg path) {
-    fill: #fff;
+  .header-scrolled nav :global(svg path) {
+    fill: #6B6760;
   }
 
-  #right-side button :global(svg path) {
-    fill: #2c2c34;
+  .header-scrolled nav a:hover :global(svg path) {
+    fill: #1A1814;
   }
 
-  .header-scrolled #right-side :global(svg path) {
-    fill: #2c2c34;
+  .header-scrolled nav span {
+    background-color: rgba(214, 210, 203, 0.5);
   }
 
   .header-scrolled #contact-button {
-    color: #fff;
+    color: #FDFCFA;
+    background-color: #1A1814;
+    border-color: #1A1814;
+  }
+
+  .header-scrolled #contact-button:hover {
+    background-color: #C1440E;
+    border-color: #C1440E;
   }
 
   .header-scrolled #contact-button :global(svg path) {
-    fill: #fff;
+    fill: #FDFCFA;
   }
 
-  .header-scrolled button {
-    outline: 1px solid #2c2c34;
+  #right-side :global(svg path) {
+    fill: currentColor;
+  }
+
+  .header-scrolled #right-side a,
+  .header-scrolled #right-side button {
+    color: #6B6760;
+    border-color: rgba(214, 210, 203, 1);
+  }
+
+  .header-scrolled #right-side :global(svg path) {
+    fill: #6B6760;
+  }
+
+  .header-scrolled #right-side a:hover,
+  .header-scrolled #right-side button:hover {
+    color: #1A1814;
+  }
+
+  .header-scrolled #right-side a:hover :global(svg path),
+  .header-scrolled #right-side button:hover :global(svg path) {
+    fill: #1A1814;
   }
 
   .mobile-menu-open #header-logo :global(svg path) {
-    fill: #2c2c34;
+    fill: #FDFCFA;
   }
 
+  .mobile-menu-open #right-side a,
   .mobile-menu-open #right-side button {
-    outline: 1px solid #2c2c34;
+    color: rgba(253, 252, 250, 0.7);
+    border-color: rgba(253, 252, 250, 0.2);
+  }
+
+  .mobile-menu-open #right-side :global(svg path) {
+    fill: rgba(253, 252, 250, 0.7);
   }
 
   .mobile-menu-open.header-scrolled {
-    background-color: inherit;
-    box-shadow: none;
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
   }
 </style>
 
@@ -187,7 +260,7 @@ const navLinks = [
   let menuOpen = false;
 
   function headerScroll() {
-    if (header) {
+    if (header && !menuOpen) {
       header.classList.toggle("header-scrolled", window.scrollY > 0);
     }
   }
@@ -212,10 +285,15 @@ const navLinks = [
     }
 
     menuOpen = !menuOpen;
+
+    // Re-evaluate scroll state after closing
+    if (!menuOpen) {
+      headerScroll();
+    }
   }
 </script>
 
-<script is:inline data-astro-rerun>
+<script is:inline>
   document.querySelector("button")?.addEventListener("click", toggleMenu);
 
   window.addEventListener("scroll", headerScroll);

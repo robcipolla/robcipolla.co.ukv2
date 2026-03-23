@@ -1,8 +1,52 @@
-<footer class="bg-hero-gradient">
-  <div class="bg-kashmir-blue-700 py-4 text-off-white">
-    <div class="container flex items-center justify-between">
-      <p class="text-sm">
-        &copy; {new Date().getFullYear()} Rob Cipolla. All rights reserved.
+---
+import Logo from "@components/Logo.astro";
+import LinkedIn from "@components/icons/LinkedIn.astro";
+import X from "@components/icons/X.astro";
+import Github from "@components/icons/Github.astro";
+---
+
+<footer class="bg-nightfall">
+  <div class="mx-auto max-w-5xl px-6 py-12 lg:px-8 lg:py-16">
+    <div class="flex flex-col items-center gap-6">
+      <!-- Logo -->
+      <a href="/" class="transition-opacity hover:opacity-60">
+        <Logo variant="light" />
+      </a>
+
+      <!-- Social links -->
+      <div class="flex items-center gap-4">
+        <a
+          class="text-chalk/30 transition-colors hover:text-chalk/60"
+          href="https://www.linkedin.com/in/rob-cipolla"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="sr-only">LinkedIn</span>
+          <LinkedIn class="h-4 w-4" />
+        </a>
+        <a
+          class="text-chalk/30 transition-colors hover:text-chalk/60"
+          href="https://twitter.com/robcipolla"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="sr-only">X</span>
+          <X class="h-4 w-4" />
+        </a>
+        <a
+          class="text-chalk/30 transition-colors hover:text-chalk/60"
+          href="https://github.com/robcipolla"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="sr-only">GitHub</span>
+          <Github class="h-4 w-4" />
+        </a>
+      </div>
+
+      <!-- Copyright -->
+      <p class="font-mono text-[11px] text-chalk/20">
+        &copy; {new Date().getFullYear()} Rob Cipolla.
       </p>
     </div>
   </div>

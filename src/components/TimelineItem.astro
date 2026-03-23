@@ -12,19 +12,21 @@ const { title, date, company, year, last } = Astro.props;
 
 <div class="relative mb-8 flex">
   <div
-    class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-accent-purple text-white"
+    class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-ember text-chalk font-mono text-xs"
   >
     {year}
   </div>
   <div
-    class=`absolute left-6 top-12 border-l-2 border-dotted border-accent-purple/50 ${last ? 'h-[85%]' : 'h-full'}`
+    class=`absolute left-6 top-12 border-l-2 border-dotted border-ember/50 ${last ? 'h-[85%]' : 'h-full'}`
   >
   </div>
   <div class="timeline-content ml-4 md:ml-8">
-    <div class="text-sm font-semibold text-accent-purple">
+    <div class="text-sm font-mono text-ember">
       {date}
     </div>
-    <div class="text-lg font-bold text-gray-900">{title}, {company}</div>
-    <slot />
+    <h3 class="font-serif text-lg text-ink">{title}, {company}</h3>
+    <div class="mt-2 space-y-2 text-[14px] leading-relaxed text-dusk">
+      <slot />
+    </div>
   </div>
 </div>

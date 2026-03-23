@@ -12,37 +12,69 @@ const orderedPosts = posts.sort((a, b) => {
 ---
 
 <SiteLayout
-  title="Blog | Full Stack Developer & Designer"
-  description="Welcome to my blog, where I write about web development and UI/UX design, providing tips, tricks and insights into modern web development"
+  title="Blog | Rob Cipolla"
+  description="Writing about web development, product engineering, and the craft of building user-facing software."
   ogImage="/og/blog.png"
 >
-  <section class="bg-hero-gradient">
-    <div
-      class="container flex flex-col py-28 text-white lg:space-y-0 lg:pb-20 lg:pt-40"
-    >
-      <h1 class="mb-6 text-5xl font-semibold">Blog</h1>
-      <p>
-        I write about web development and UI/UX design, providing tips, tricks
-        and insights into modern web development
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-nightfall">
+    <div class="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-ember/[0.03]"></div>
+
+    <div class="mx-auto max-w-5xl px-6 pb-20 pt-36 lg:px-8 lg:pb-24 lg:pt-44">
+
+      <p class="mb-6 font-mono text-[11px] uppercase tracking-[0.14em] text-chalk/50">RC · Writing</p>
+
+      <h1 class="font-serif text-4xl leading-[1.05] text-chalk sm:text-5xl">Blog</h1>
+
+      <div class="mt-6 h-0.5 w-8 bg-ember"></div>
+
+      <p class="mt-6 max-w-lg text-[15px] font-light leading-relaxed text-chalk/50">
+        Thinking out loud about web development, product engineering, and the decisions behind the code.
       </p>
     </div>
   </section>
+
+  <!-- Posts -->
   <section>
-    <div class="container py-12">
-      <div class="mx-auto grid grid-cols-12 gap-x-6 gap-y-8">
+    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
+
+      <!-- Section label -->
+      <div class="mb-12 flex items-center gap-3">
+        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-dusk">All posts</span>
+        <span class="h-px flex-1 bg-rule"></span>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
-          orderedPosts.map((post) => (
-            <article class="col-span-12 flex flex-col justify-between rounded-lg bg-white px-9 py-8 shadow-lg lg:col-span-4">
-              <div class="space-y-4">
-                <h3 class="text-lg font-semibold">{post.data.title}</h3>
-                <div class="flex space-x-2.5">
-                  <Calendar class="h-5 w-5" />
-                  <span>Posted: {format(post.data.date, "dd/MM/yyy")}</span>
+          orderedPosts.map((post, i) => (
+            <article class="group relative flex flex-col justify-between rounded-lg border border-rule bg-chalk p-7 transition-all duration-300 hover:border-dusk/40">
+
+              <!-- Ghost numeral -->
+              <span class="pointer-events-none absolute right-5 top-4 select-none font-serif text-[4rem] leading-none text-rule/40">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+
+              <div class="relative space-y-4">
+                <!-- Mono tag -->
+                <span class="inline-block rounded border border-rule px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-dusk">
+                  article
+                </span>
+
+                <h2 class="font-serif text-lg leading-snug text-ink">{post.data.title}</h2>
+
+                <div class="flex items-center gap-2 font-mono text-[11px] text-dusk">
+                  <Calendar class="h-3.5 w-3.5" />
+                  <span>{format(post.data.date, "MMM yyyy")}</span>
                 </div>
               </div>
-              <div class="pt-6">
-                <a class="btn" href={`/blog/${post.slug}`}>
-                  Read this post
+
+              <div class="pt-7">
+                <a
+                  class="inline-flex items-center gap-1.5 text-[13px] font-medium text-ink transition-colors group-hover:text-ember"
+                  href={`/blog/${post.id}`}
+                >
+                  Read post
+                  <span class="transition-transform duration-200 group-hover:translate-x-0.5">&rarr;</span>
                 </a>
               </div>
             </article>
