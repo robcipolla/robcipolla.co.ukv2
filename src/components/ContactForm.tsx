@@ -23,7 +23,7 @@ function ContactForm({ formId }: { formId: string }) {
       {sent && (
         <div className="rounded-lg border border-ember/20 bg-ember/5 p-6">
           <p className="font-serif text-lg text-ink">Message sent</p>
-          <p className="mt-1 text-[14px] text-dusk">
+          <p className="mt-1 text-base text-dusk">
             Thanks for reaching out — I'll get back to you soon.
           </p>
         </div>
@@ -31,7 +31,7 @@ function ContactForm({ formId }: { formId: string }) {
       {!sent && (
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-1.5">
-            <label htmlFor="name" className="font-mono text-[11px] uppercase tracking-wide text-dusk">
+            <label htmlFor="name" className="font-mono text-xs uppercase tracking-wide text-dusk">
               Name
             </label>
             <input
@@ -39,7 +39,7 @@ function ContactForm({ formId }: { formId: string }) {
               type="text"
               name="name"
               required
-              className="block w-full rounded border border-rule bg-chalk px-4 py-2.5 text-[14px] text-ink shadow-none transition-colors focus:border-ember focus:ring-1 focus:ring-ember focus:outline-none"
+              className="block w-full rounded border border-rule bg-chalk px-4 py-2.5 text-base text-ink shadow-none transition-colors focus:border-ember focus:ring-1 focus:ring-ember focus:outline-none"
             />
             <ValidationError
               prefix="Name"
@@ -52,7 +52,7 @@ function ContactForm({ formId }: { formId: string }) {
           <div className="flex flex-col gap-1.5">
             <label
               htmlFor="email"
-              className="font-mono text-[11px] uppercase tracking-wide text-dusk"
+              className="font-mono text-xs uppercase tracking-wide text-dusk"
             >
               Email
             </label>
@@ -61,7 +61,7 @@ function ContactForm({ formId }: { formId: string }) {
               type="email"
               name="email"
               required
-              className="block w-full rounded border border-rule bg-chalk px-4 py-2.5 text-[14px] text-ink shadow-none transition-colors focus:border-ember focus:ring-1 focus:ring-ember focus:outline-none"
+              className="block w-full rounded border border-rule bg-chalk px-4 py-2.5 text-base text-ink shadow-none transition-colors focus:border-ember focus:ring-1 focus:ring-ember focus:outline-none"
             />
             <ValidationError
               prefix="Email"
@@ -74,7 +74,7 @@ function ContactForm({ formId }: { formId: string }) {
           <div className="flex flex-col gap-1.5">
             <label
               htmlFor="message"
-              className="font-mono text-[11px] uppercase tracking-wide text-dusk"
+              className="font-mono text-xs uppercase tracking-wide text-dusk"
             >
               Message
             </label>
@@ -83,7 +83,7 @@ function ContactForm({ formId }: { formId: string }) {
               name="message"
               required
               rows={5}
-              className="block w-full rounded border border-rule bg-chalk px-4 py-2.5 text-[14px] text-ink shadow-none transition-colors focus:border-ember focus:ring-1 focus:ring-ember focus:outline-none"
+              className="block w-full rounded border border-rule bg-chalk px-4 py-2.5 text-base text-ink shadow-none transition-colors focus:border-ember focus:ring-1 focus:ring-ember focus:outline-none"
             ></textarea>
             <ValidationError
               prefix="Message"
@@ -93,7 +93,7 @@ function ContactForm({ formId }: { formId: string }) {
             />
           </div>
 
-          <p className="font-mono text-[10px] text-dusk">
+          <p className="font-mono text-xs text-dusk">
             By submitting this form you agree your details will be used only for the purpose of your enquiry.
           </p>
 
