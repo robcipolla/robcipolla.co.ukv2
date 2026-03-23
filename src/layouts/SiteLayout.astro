@@ -62,14 +62,16 @@ const { title, description, ogImage, type = "website" } = Astro.props;
     <Footer />
     <SpeedInsights />
     <style is:global>
-      p a {
-        color: #C1440E;
-        text-decoration: none;
-        font-weight: 600;
-      }
+      @layer base {
+        p a {
+          color: #B5400D;
+          text-decoration: none;
+          font-weight: 600;
+        }
 
-      p a:hover {
-        text-decoration: underline;
+        p a:hover {
+          text-decoration: underline;
+        }
       }
     </style>
   </body>
