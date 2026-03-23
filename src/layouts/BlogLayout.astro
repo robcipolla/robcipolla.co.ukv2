@@ -16,7 +16,7 @@ interface Props {
 }
 
 const { frontmatter, slug } = Astro.props;
-const postedAt = format(frontmatter.date, "MMMM dd, yyyy");
+const postedAt = format(frontmatter.date, "MMM dd, yyyy");
 ---
 
 <SiteLayout
@@ -25,33 +25,50 @@ const postedAt = format(frontmatter.date, "MMMM dd, yyyy");
   ogImage={`/blog/${slug}/og.png`}
   type="article"
 >
-  <section class="bg-nightfall">
-    <div
-      class="container flex flex-col py-28 text-chalk lg:space-y-0 lg:pb-20 lg:pt-40"
-    >
-      <h1 class="mb-6 text-2xl font-semibold sm:text-5xl">
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-nightfall">
+    <div class="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-ember/[0.03]"></div>
+
+    <div class="mx-auto max-w-5xl px-6 pb-20 pt-36 lg:px-8 lg:pb-24 lg:pt-44">
+
+      <!-- Meta eyebrow -->
+      <div class="mb-6 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.12em] text-chalk/50">
+        <span class="text-ember">article</span>
+        <span class="text-chalk/15">·</span>
+        <span>{postedAt}</span>
+        <span class="text-chalk/15">·</span>
+        <span>{frontmatter.readingTime} min read</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="max-w-3xl font-serif text-3xl leading-[1.1] text-chalk sm:text-4xl lg:text-5xl">
         {frontmatter.title}
       </h1>
-      <div class="flex space-x-4 font-mono text-sm text-chalk/50">
-        <span class="flex items-center space-x-2.5">
-          <Calendar class="h-5 w-5" />
-          <span>{postedAt}</span>
-        </span>
-        <span class="flex items-center space-x-2.5">
-          <Clock class="h-5 w-5" />
-          <span>{frontmatter.readingTime} min read</span>
-        </span>
-      </div>
-      <p class="pt-4 text-chalk/60">{frontmatter.excerpt}</p>
+
+      <!-- Ember rule -->
+      <div class="mt-8 h-0.5 w-8 bg-ember"></div>
+
+      <!-- Excerpt -->
+      <p class="mt-6 max-w-xl text-[15px] font-light leading-relaxed text-chalk/50">
+        {frontmatter.excerpt}
+      </p>
     </div>
   </section>
-  <article class="container">
-    <div class="prose mx-auto max-w-3xl py-8">
-      <slot />
-      <div class="mt-12">
-        <a href="/blog" class="btn no-underline">
-          &larr; Back to blog archive</a
+
+  <!-- Article body -->
+  <article>
+    <div class="mx-auto max-w-3xl px-6 py-12 lg:px-8 lg:py-16">
+      <div class="prose prose-lg max-w-none">
+        <slot />
+      </div>
+
+      <div class="mt-16 border-t border-rule pt-8">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 rounded border border-rule px-5 py-2.5 text-[13px] font-medium text-dusk no-underline transition-all hover:border-ink hover:text-ink"
         >
+          &larr; Back to blog archive
+        </a>
       </div>
     </div>
   </article>

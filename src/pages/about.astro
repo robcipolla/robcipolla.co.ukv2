@@ -1,7 +1,5 @@
 ---
 import SiteLayout from "@layouts/SiteLayout.astro";
-import aboutImage from "@assets/profile-about-page.webp";
-import { Image } from "astro:assets";
 import TimelineContainer from "@components/TimelineContainer.astro";
 import TimelineItem from "@components/TimelineItem.astro";
 
@@ -9,210 +7,213 @@ const yearsExperience = new Date().getFullYear() - 2016;
 ---
 
 <SiteLayout
-  title="About Rob Cipolla | Full Stack Web Developer & Designer"
-  description={`Meet Rob, a self-taught developer, designer, and digital strategist with ${yearsExperience}+ years of experience. Explore his journey and tech stack.`}
+  title="About | Rob Cipolla"
+  description={`Product engineer and designer with ${yearsExperience}+ years of experience shipping software that works as well as it looks.`}
   ogImage="/og/about.png"
 >
-  <section class="bg-nightfall">
-    <div
-      class="container flex flex-col space-y-24 py-28 text-chalk lg:space-y-0 lg:pb-20 lg:pt-40"
-    >
-      <h1 class="mb-6 text-2xl sm:text-5xl">About Rob Cipolla</h1>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-nightfall">
+    <div class="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-ember/[0.03]"></div>
+
+    <div class="mx-auto max-w-5xl px-6 pb-20 pt-36 lg:px-8 lg:pb-24 lg:pt-44">
+
+      <p class="mb-6 font-mono text-[11px] uppercase tracking-[0.14em] text-chalk/50">RC · Background</p>
+
+      <h1 class="font-serif text-4xl leading-[1.05] text-chalk sm:text-5xl">About me</h1>
+
+      <div class="mt-6 h-0.5 w-8 bg-ember"></div>
+
+      <p class="mt-6 max-w-lg text-[15px] font-light leading-relaxed text-chalk/50">
+        Product engineer and designer with over {yearsExperience} years of experience — from custom WordPress themes to full-stack React applications.
+      </p>
     </div>
   </section>
-  <div class="container">
-    <div class="prose mx-auto max-w-3xl py-8">
-      <h2>Contents</h2>
-      <ul>
-        <li>
-          <a href="#top">Introduction</a>
-        </li>
-        <li>
-          <a href="#how-i-got-here">How I got here</a>
-        </li>
-        <li>
-          <a href="#experience">Experience</a>
-        </li>
-        <li>
-          <a href="#education">Education</a>
-        </li>
-      </ul>
-      <h2>Introduction</h2>
-      <p id="top">
-        <strong>
-          Hey I&apos;m Rob, I&apos;m a self-taught fullstack developer, designer
-          and digital strategist with over {yearsExperience} years industry experience.
-          I have a passion for creating modern, clean and user&ndash;friendly websites
-          and applications.
-        </strong>
-      </p>
-      <Image loading="eager" src={aboutImage} alt="Rob" />
-      <h2 id="how-i-got-here">How I got here</h2>
-      <p>
-        Interestingly, I didn't initially see myself in development. Post-high
-        school, I pursued a Game Design BTEC covering various aspects like
-        concept art, scriptwriting, 3D modeling, and level design, with a brief
-        encounter with Game Maker software—no coding involved. My journey took
-        me to DeMontfort University for Game Art Design, focusing more on art
-        and 3D modeling. However, my passion for gaming waned, leading me to
-        switch to a Graphic Design and E-media course offered by Leicester
-        College and De Montfort University. It was here that web development and
-        design piqued my interest, especially when I had to incorporate
-        JavaScript to make accordions work in a website project—igniting my
-        fascination with web development.
-      </p>
-      <p>
-        Progressing, I completed the Graphic Design & E-media course, followed
-        by a Professional Studies year in the Creative Industries, where I honed
-        skills in creative business management, marketing, branding, and more,
-        earning a First Class Honours. My career began at a Web Design and SEO
-        company, developing custom WordPress themes for small businesses, which
-        paved the way to diverse projects, clients, and programming languages,
-        enhancing my ability to create websites and apps.
-      </p>
-      <h2 id="experience">Experience</h2>
-      <TimelineContainer>
-        <TimelineItem
-          title="Web developer"
-          date="June 2023 - Current"
-          company="Locale"
-          year="2024"
-        >
-          <p>
-            I joined Locale as a full stack developer with a focus on React
-            development, working to improve, maintain and develop legacy and new
-            features.
+
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- INTRODUCTION                                    -->
+  <!-- ════════════════════════════════════════════════ -->
+  <section>
+    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
+
+      <!-- Section label -->
+      <div class="mb-12 flex items-center gap-3">
+        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-dusk">01 — Introduction</span>
+        <span class="h-px flex-1 bg-rule"></span>
+      </div>
+
+      <div class="max-w-3xl">
+        <!-- Pull quote -->
+        <div class="mb-8 border-l-2 border-ember/60 pl-5">
+          <p class="font-serif text-xl leading-snug text-ink sm:text-2xl">
+            Hey, I'm Rob — a self-taught fullstack developer, designer and digital strategist with over {yearsExperience} years of industry experience.
           </p>
-          <p>Technology used:</p>
-          <ul>
-            <li>React</li>
-            <li>Node.js</li>
-            <li>PHP</li>
-            <li>Laravel</li>
-            <li>MySQL/MariaDB</li>
-            <li>Docker</li>
-          </ul>
-        </TimelineItem>
-        <TimelineItem
-          title="Head of Web"
-          date="Sep 2019 - June 2023"
-          company="Reach Marketing Communications"
-          year="2023"
-        >
+        </div>
+
+        <div class="space-y-4 text-[15px] leading-relaxed text-dusk">
           <p>
-            During my tenure, I was responsible for overseeing the project
-            lifecycle, from initiation and development to the enhancement and
-            maintenance of the company's websites. I successfully mentored
-            junior developers, elevating their expertise to an advanced level.
-            My introduction of project management tools, such as Trello, and the
-            integration of GIT version control significantly improved our
-            operational workflows. I led the strategic transition of our hosting
-            services from traditional servers to AWS for our legacy WordPress
-            sites, and was pivotal in shifting the company's development focus
-            to JAMstack style websites, utilizing cutting-edge technologies like
-            Next.js, Astro, Node, and Netlify hosting. Leveraging my graphic and
-            web design expertise, I also trained our designers in UI/UX
-            fundamentals, ensuring our web designs adhered to the highest
-            standards and best practices of the industry.
+            I have a passion for creating modern, clean and user-friendly websites and applications. I work across the full stack — React, Next.js, TypeScript on the front, Node and PHP on the back. The bit I care about most is where design and engineering meet: building interfaces that feel considered, backed by systems that hold up.
           </p>
-          <p>Technology used:</p>
-          <ul>
-            <li>React</li>
-            <li>Node.js</li>
-            <li>PHP</li>
-            <li>MySQL/MariaDB</li>
-            <li>Docker</li>
-            <li>Next.js</li>
-            <li>Astro</li>
-            <li>Netlify</li>
-            <li>AWS</li>
-            <li>TailwindCSS</li>
-            <li>SCSS</li>
-            <li>Webpack</li>
-            <li>Adobe Creative Suite</li>
-            <li>WordPress</li>
-            <li>JavaScript/TypeScript</li>
-          </ul>
-        </TimelineItem>
-        <TimelineItem
-          title="Web designer / developer"
-          date="Nov 2017 - Jul 2019"
-          company="Success Local Limited"
-          year="2017"
-        >
-          <p>
-            At Success Load Limited, I was an integral part of a nimble team of
-            designer/developers, where we specialized in crafting
-            marketing-centric WordPress websites. During my stint, I not only
-            honed my skills in PHP, Adobe Creative Suite, CSS, HTML, JavaScript,
-            WordPress, and Git but also imparted advanced JavaScript knowledge
-            to my peers, greatly enhancing the feature set and interactivity of
-            our web projects. My proactive approach led to the adoption of GIT
-            version control with Bitbucket across our workflows, streamlining
-            our development processes. I frequently took on dual roles,
-            shepherding websites from their initial wireframe stage to the final
-            production build, which allowed me to showcase a full spectrum of
-            design and development expertise.
-          </p>
-          <p>Technology used:</p>
-          <ul>
-            <li>PHP</li>
-            <li>MySQL/MariaDB</li>
-            <li>Docker</li>
-            <li>WordPress</li>
-            <li>Adobe Creative Suite</li>
-            <li>SCSS</li>
-            <li>JavaScript/jQuery</li>
-          </ul>
-        </TimelineItem>
-        <TimelineItem
-          title="Web designer / developer"
-          date="Nov 2017 - Jul 2019"
-          company="Rob Cipolla Design"
-          year="2015"
-          last
-        >
-          <p>
-            After university, I embraced the entrepreneurial spirit as a
-            Freelance Web Designer, whilst working part time, focusing on web
-            design and WordPress theme building. I applied my proficiency in
-            Adobe Creative Suite and WordPress to deliver tailored web
-            solutions. Notably, I forged a collaborative link with my
-            university, receiving referrals from a former course leader to
-            assist current students in creating and refining their personal
-            portfolio websites.
-          </p>
-          <p>Technology used:</p>
-          <ul>
-            <li>PHP</li>
-            <li>MySQL/MariaDB</li>
-            <li>WordPress</li>
-            <li>Adobe Creative Suite</li>
-            <li>CSS</li>
-            <li>JavaScript/jQuery</li>
-          </ul>
-        </TimelineItem>
-      </TimelineContainer>
-      <h2 id="education">Education</h2>
-      <p><strong>De Montfort University</strong></p>
-      <p>
-        Undergraduate Degree (1st Class Honours) BA Professional Studies
-        (Creative Industries)
-      </p>
-      <ul>
-        <li>
-          Worked with Leicester University to create a marketing campaign to
-          help with racism in Leicester
-        </li>
-        <li>
-          Worked with various different creatives from different backgrounds
-          such as photography, fashion, design and development
-        </li>
-        <li>
-          Entered the course from a Graphic Design and E-Media Foundation
-          Degree.
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- HOW I GOT HERE                                  -->
+  <!-- ════════════════════════════════════════════════ -->
+  <section class="bg-nightfall">
+    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
+
+      <!-- Section label -->
+      <div class="mb-12 flex items-center gap-3">
+        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-chalk/50">02 — How I got here</span>
+        <span class="h-px flex-1 bg-chalk/[0.06]"></span>
+      </div>
+
+      <div class="max-w-3xl space-y-5 text-[15px] leading-relaxed text-chalk/55">
+        <p>
+          I didn't initially see myself in development. Post-high school, I pursued a Game Design BTEC covering various aspects like concept art, scriptwriting, 3D modeling, and level design, with a brief encounter with Game Maker software — no coding involved. My journey took me to DeMontfort University for Game Art Design, focusing more on art and 3D modeling.
+        </p>
+        <p>
+          However, my passion for gaming waned, leading me to switch to a Graphic Design and E-media course offered by Leicester College and De Montfort University. It was here that web development and design piqued my interest, especially when I had to incorporate JavaScript to make accordions work in a website project — igniting my fascination with web development.
+        </p>
+        <p>
+          I completed the Graphic Design & E-media course, followed by a Professional Studies year in the Creative Industries, where I honed skills in creative business management, marketing, branding, and more, earning a First Class Honours. My career began at a Web Design and SEO company, developing custom WordPress themes for small businesses, which paved the way to diverse projects, clients, and programming languages.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- EXPERIENCE                                      -->
+  <!-- ════════════════════════════════════════════════ -->
+  <section>
+    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
+
+      <!-- Section label -->
+      <div class="mb-12 flex items-center gap-3">
+        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-dusk">03 — Experience</span>
+        <span class="h-px flex-1 bg-rule"></span>
+      </div>
+
+      <div class="max-w-3xl">
+        <TimelineContainer>
+          <TimelineItem
+            title="Senior Full Stack Web Developer"
+            date="2025 - Current"
+            company="Locale"
+            year="2025"
+          >
+            <p>
+              Promoted to senior role with increased responsibilities across the full codebase. I work across DevOps, frontend and backend — supporting infrastructure, building out new modules and features, and helping shape technical direction. Day to day I'm as likely to be configuring CI pipelines and deployment workflows as I am building new React components or shipping product features.
+            </p>
+            <p class="mt-3 font-mono text-[11px] uppercase tracking-wide text-dusk">Technology</p>
+            <div class="mt-2 flex flex-wrap gap-1.5">
+              {["React", "Node.js", "PHP", "Laravel", "MySQL", "Docker", "CI/CD", "AWS"].map(tech => (
+                <span class="rounded border border-rule px-2 py-0.5 font-mono text-[10px] text-dusk">{tech}</span>
+              ))}
+            </div>
+          </TimelineItem>
+          <TimelineItem
+            title="Web developer"
+            date="June 2023 - 2025"
+            company="Locale"
+            year="2023"
+          >
+            <p>
+              I joined Locale as a full stack developer with a focus on React
+              development, working to improve, maintain and develop legacy and new
+              features.
+            </p>
+            <p class="mt-3 font-mono text-[11px] uppercase tracking-wide text-dusk">Technology</p>
+            <div class="mt-2 flex flex-wrap gap-1.5">
+              {["React", "Node.js", "PHP", "Laravel", "MySQL", "Docker"].map(tech => (
+                <span class="rounded border border-rule px-2 py-0.5 font-mono text-[10px] text-dusk">{tech}</span>
+              ))}
+            </div>
+          </TimelineItem>
+          <TimelineItem
+            title="Head of Web"
+            date="Sep 2019 - June 2023"
+            company="Reach Marketing Communications"
+            year="2023"
+          >
+            <p>
+              Responsible for overseeing the project lifecycle, from initiation and development to the enhancement and maintenance of the company's websites. Successfully mentored junior developers, introduced project management tools and GIT version control, and led the strategic transition of hosting to AWS and the shift to JAMstack technologies.
+            </p>
+            <p class="mt-3 font-mono text-[11px] uppercase tracking-wide text-dusk">Technology</p>
+            <div class="mt-2 flex flex-wrap gap-1.5">
+              {["React", "Next.js", "Astro", "Node.js", "PHP", "TypeScript", "AWS", "TailwindCSS", "WordPress", "Docker"].map(tech => (
+                <span class="rounded border border-rule px-2 py-0.5 font-mono text-[10px] text-dusk">{tech}</span>
+              ))}
+            </div>
+          </TimelineItem>
+          <TimelineItem
+            title="Web designer / developer"
+            date="Nov 2017 - Jul 2019"
+            company="Success Local Limited"
+            year="2017"
+          >
+            <p>
+              Part of a nimble team of designer/developers, specialising in crafting marketing-centric WordPress websites. Introduced GIT version control with Bitbucket and frequently shepherded websites from wireframe to production build.
+            </p>
+            <p class="mt-3 font-mono text-[11px] uppercase tracking-wide text-dusk">Technology</p>
+            <div class="mt-2 flex flex-wrap gap-1.5">
+              {["PHP", "MySQL", "WordPress", "SCSS", "JavaScript", "jQuery"].map(tech => (
+                <span class="rounded border border-rule px-2 py-0.5 font-mono text-[10px] text-dusk">{tech}</span>
+              ))}
+            </div>
+          </TimelineItem>
+          <TimelineItem
+            title="Web designer / developer"
+            date="Nov 2017 - Jul 2019"
+            company="Rob Cipolla Design"
+            year="2015"
+            last
+          >
+            <p>
+              Freelance web designer focusing on WordPress theme building. Built a collaborative link with my university, receiving referrals to assist students in creating personal portfolio websites.
+            </p>
+            <p class="mt-3 font-mono text-[11px] uppercase tracking-wide text-dusk">Technology</p>
+            <div class="mt-2 flex flex-wrap gap-1.5">
+              {["PHP", "MySQL", "WordPress", "CSS", "JavaScript"].map(tech => (
+                <span class="rounded border border-rule px-2 py-0.5 font-mono text-[10px] text-dusk">{tech}</span>
+              ))}
+            </div>
+          </TimelineItem>
+        </TimelineContainer>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- EDUCATION (commented out)                       -->
+  <!-- ════════════════════════════════════════════════
+  <section class="bg-nightfall">
+    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
+      <div class="mb-12 flex items-center gap-3">
+        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-chalk/50">04 — Education</span>
+        <span class="h-px flex-1 bg-chalk/[0.06]"></span>
+      </div>
+      <div class="max-w-3xl">
+        <article class="rounded-lg border border-chalk/[0.06] p-6 lg:p-8">
+          <span class="inline-block rounded border border-chalk/15 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-chalk/60">
+            1st Class Honours
+          </span>
+          <h3 class="mt-4 font-serif text-lg text-chalk">De Montfort University</h3>
+          <p class="mt-1 font-mono text-[11px] tracking-wide text-chalk/50">BA Professional Studies (Creative Industries)</p>
+          <ul class="mt-5 space-y-2 text-[14px] leading-relaxed text-chalk/50">
+            <li>Worked with Leicester University to create a marketing campaign to help with racism in Leicester</li>
+            <li>Worked with various creatives from different backgrounds</li>
+            <li>Entered from a Graphic Design and E-Media Foundation Degree</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+  -->
 </SiteLayout>

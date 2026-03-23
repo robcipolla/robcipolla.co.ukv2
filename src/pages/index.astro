@@ -14,25 +14,24 @@ const orderedPosts = posts.sort((a, b) =>
 ---
 
 <SiteLayout
-  title="Rob Cipolla | Full Stack Developer & Designer"
-  description="I'm a full stack developer and designer based in the United Kingdom. I'm passionate about building and designing modern, accessible, and performant web applications."
+  title="Rob Cipolla | Product Engineer"
+  description="Product engineer and designer. I build user-facing software with a focus on craft, performance, and product thinking."
   ogImage="/og/home.png"
 >
   <!-- ════════════════════════════════════════════════ -->
   <!-- HERO                                            -->
   <!-- ════════════════════════════════════════════════ -->
   <section class="relative overflow-hidden bg-nightfall">
-    <!-- Subtle warm glow -->
     <div class="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-ember/[0.03]"></div>
 
-    <div class="mx-auto max-w-5xl px-6 pb-20 pt-36 lg:px-8 lg:pb-24 lg:pt-44">
+    <div class="mx-auto max-w-5xl px-6 pb-14 pt-36 lg:px-8 lg:pb-16 lg:pt-44">
 
       <!-- Eyebrow -->
-      <p class="mb-6 font-mono text-[11px] uppercase tracking-[0.14em] text-chalk/25">RC · Lexicon</p>
+      <p class="mb-6 font-mono text-[11px] uppercase tracking-[0.14em] text-chalk/50">RC · Lexicon</p>
 
       <!-- Headline — the dictionary device -->
       <h1 class="font-serif text-4xl leading-[1.05] text-chalk sm:text-5xl lg:text-[3.75rem]">
-        Product Engineer,<br /><em class="text-chalk/50">noun</em>
+        Product Engineer,<br /><em class="text-chalk/80">noun</em>
       </h1>
 
       <!-- Phonetics -->
@@ -43,7 +42,7 @@ const orderedPosts = posts.sort((a, b) =>
 
       <!-- Definition -->
       <div class="mt-6 border-l-2 border-ember/50 pl-5">
-        <p class="max-w-lg text-[15px] leading-relaxed text-chalk/50">
+        <p class="max-w-lg text-[15px] leading-relaxed text-chalk/55">
           A software engineer who combines product intuition with full-stack capability — designing, building, and iterating on user-facing features without losing sight of why they exist.
         </p>
       </div>
@@ -76,7 +75,7 @@ const orderedPosts = posts.sort((a, b) =>
   <!-- RECENT POSTS                                    -->
   <!-- ════════════════════════════════════════════════ -->
   <section>
-    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
+    <div class="mx-auto max-w-5xl px-6 py-16 lg:px-8 lg:py-20">
 
       <!-- Section label -->
       <div class="mb-12 flex items-center gap-3">
@@ -135,41 +134,66 @@ const orderedPosts = posts.sort((a, b) =>
 
 
   <!-- ════════════════════════════════════════════════ -->
-  <!-- ABOUT                                           -->
+  <!-- SERVICES / LANCIO STUDIO                        -->
   <!-- ════════════════════════════════════════════════ -->
-  <section class="bg-linen">
-    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
+  <section class="bg-nightfall">
+    <div class="mx-auto max-w-5xl px-6 py-16 lg:px-8 lg:py-20">
 
       <!-- Section label -->
-      <div class="mb-14 flex items-center gap-3">
-        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-dusk">02 — About</span>
+      <div class="mb-12 flex items-center gap-3">
+        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-chalk/50">02 — Services</span>
+        <span class="h-px flex-1 bg-chalk/[0.06]"></span>
+      </div>
+
+      <div class="max-w-2xl">
+        <!-- Pull quote -->
+        <div class="mb-6 border-l-2 border-ember/60 pl-5">
+          <p class="font-serif text-xl leading-snug text-chalk sm:text-2xl">
+            I design and build websites, apps, and digital products through Lancio Studio.
+          </p>
+        </div>
+
+        <p class="text-[15px] leading-relaxed text-chalk/50">
+          From brand identity to full builds — if it lives on the web, I can help you ship it. Lancio is where product thinking meets hands-on engineering.
+        </p>
+
+        <div class="pt-8">
+          <a
+            class="inline-flex items-center gap-2 rounded border border-chalk/15 px-5 py-2.5 text-[13px] font-medium text-chalk/70 transition-all hover:border-ember hover:text-ember"
+            href="/contact"
+          >
+            Get in touch about a project
+            <span>&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- ABOUT                                           -->
+  <!-- ════════════════════════════════════════════════ -->
+  <section>
+    <div class="mx-auto max-w-5xl px-6 py-16 lg:px-8 lg:py-20">
+
+      <!-- Section label -->
+      <div class="mb-12 flex items-center gap-3">
+        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-dusk">03 — About</span>
         <span class="h-px flex-1 bg-rule"></span>
       </div>
 
       <div class="max-w-2xl">
         <!-- Pull quote -->
-        <div class="mb-8 border-l-2 border-ember pl-5">
+        <div class="mb-6 border-l-2 border-ember pl-5">
           <p class="font-serif text-xl leading-snug text-ink sm:text-2xl">
-            Hey I&apos;m Rob — a fullstack developer, designer and digital strategist with over
-            <strong class="font-semibold">{yearsExperience} years</strong> industry experience.
+            Product engineer and designer with over {yearsExperience} years of experience shipping software that works as well as it looks.
           </p>
         </div>
 
-        <div class="space-y-4 text-[15px] leading-relaxed text-dusk">
-          <p>
-            I have a passion for creating modern, clean and user-friendly websites
-            and applications. My wide range of experience building marketing websites
-            and applications across different technology stacks, combined with my
-            background working for various types of clientele — from national
-            property developers to the financial industry and SMEs — has given me
-            the ability to adapt to any environment.
-          </p>
-          <p>
-            I have a keen interest in designing and developing flexible design
-            systems and well tested robust backends for projects backed by
-            thorough research and planning.
-          </p>
-        </div>
+        <p class="text-[15px] leading-relaxed text-dusk">
+          I work across the full stack — React, Next.js, TypeScript on the front, Node on the back. The bit I care about most is where design and engineering meet: building interfaces that feel considered, backed by systems that hold up.
+        </p>
 
         <div class="pt-8">
           <a
