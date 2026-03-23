@@ -25,6 +25,19 @@ const postedAt = format(frontmatter.date, "MMM dd, yyyy");
   ogImage={`/blog/${slug}/og.png`}
   type="article"
 >
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": frontmatter.title,
+    "description": frontmatter.description,
+    "datePublished": frontmatter.date.toISOString(),
+    "author": {
+      "@type": "Person",
+      "name": "Rob Cipolla",
+      "url": "https://www.robcipolla.co.uk"
+    },
+    "image": `https://www.robcipolla.co.uk/blog/${slug}/og.png`
+  })} />
   <!-- Hero -->
   <section class="relative overflow-hidden bg-nightfall">
     <div class="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-ember/[0.03]"></div>

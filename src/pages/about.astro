@@ -11,6 +11,18 @@ const yearsExperience = new Date().getFullYear() - 2016;
   description={`Product engineer and designer with ${yearsExperience}+ years of experience shipping software that works as well as it looks.`}
   ogImage="/og/about.png"
 >
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Rob Cipolla",
+    "jobTitle": "Senior Full Stack Web Developer",
+    "url": "https://www.robcipolla.co.uk",
+    "sameAs": [
+      "https://www.linkedin.com/in/rob-cipolla",
+      "https://github.com/robcipolla",
+      "https://twitter.com/robcipolla"
+    ]
+  })} />
   <!-- Hero -->
   <section class="relative overflow-hidden bg-nightfall">
     <div class="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-ember/[0.03]"></div>

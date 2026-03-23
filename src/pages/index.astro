@@ -18,6 +18,23 @@ const orderedPosts = posts.sort((a, b) =>
   description="Product engineer and designer. I build user-facing software with a focus on craft, performance, and product thinking."
   ogImage="/og/home.png"
 >
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Rob Cipolla",
+    "url": "https://www.robcipolla.co.uk",
+    "author": {
+      "@type": "Person",
+      "name": "Rob Cipolla",
+      "jobTitle": "Product Engineer",
+      "url": "https://www.robcipolla.co.uk",
+      "sameAs": [
+        "https://www.linkedin.com/in/rob-cipolla",
+        "https://github.com/robcipolla",
+        "https://twitter.com/robcipolla"
+      ]
+    }
+  })} />
   <!-- ════════════════════════════════════════════════ -->
   <!-- HERO                                            -->
   <!-- ════════════════════════════════════════════════ -->
@@ -99,7 +116,7 @@ const orderedPosts = posts.sort((a, b) =>
                   article
                 </span>
 
-                <h3 class="font-serif text-lg leading-snug text-ink">{post.data.title}</h3>
+                <h2 class="font-serif text-lg leading-snug text-ink">{post.data.title}</h2>
 
                 <div class="flex items-center gap-2 font-mono text-[11px] text-dusk">
                   <Calendar class="h-3.5 w-3.5" />
