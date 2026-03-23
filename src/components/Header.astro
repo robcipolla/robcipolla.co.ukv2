@@ -15,7 +15,6 @@ const navLinks = [
 ---
 
 <header
-  transition:persist
   class="fixed top-0 z-50 w-full transition-all duration-500"
 >
   <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5 lg:px-8">
@@ -294,7 +293,7 @@ const navLinks = [
   }
 </script>
 
-<script is:inline data-astro-rerun>
+<script is:inline>
   document.querySelector("button")?.addEventListener("click", toggleMenu);
 
   window.addEventListener("scroll", headerScroll);
