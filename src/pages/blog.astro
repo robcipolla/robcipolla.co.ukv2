@@ -16,12 +16,12 @@ const orderedPosts = posts.sort((a, b) => {
   description="Welcome to my blog, where I write about web development and UI/UX design, providing tips, tricks and insights into modern web development"
   ogImage="/og/blog.png"
 >
-  <section class="bg-hero-gradient">
+  <section class="bg-nightfall">
     <div
-      class="container flex flex-col py-28 text-white lg:space-y-0 lg:pb-20 lg:pt-40"
+      class="container flex flex-col py-28 text-chalk lg:space-y-0 lg:pb-20 lg:pt-40"
     >
-      <h1 class="mb-6 text-5xl font-semibold">Blog</h1>
-      <p>
+      <h1 class="mb-6 text-5xl">Blog</h1>
+      <p class="text-chalk/60 font-light">
         I write about web development and UI/UX design, providing tips, tricks
         and insights into modern web development
       </p>
@@ -32,16 +32,16 @@ const orderedPosts = posts.sort((a, b) => {
       <div class="mx-auto grid grid-cols-12 gap-x-6 gap-y-8">
         {
           orderedPosts.map((post) => (
-            <article class="col-span-12 flex flex-col justify-between rounded-lg bg-white px-9 py-8 shadow-lg lg:col-span-4">
+            <article class="col-span-12 flex flex-col justify-between rounded-lg border border-rule bg-chalk px-9 py-8 lg:col-span-4">
               <div class="space-y-4">
-                <h3 class="text-lg font-semibold">{post.data.title}</h3>
-                <div class="flex space-x-2.5">
+                <h3 class="font-serif text-lg">{post.data.title}</h3>
+                <div class="flex space-x-2.5 font-mono text-xs text-dusk">
                   <Calendar class="h-5 w-5" />
-                  <span>Posted: {format(post.data.date, "dd/MM/yyy")}</span>
+                  <span>{format(post.data.date, "dd/MM/yyy")}</span>
                 </div>
               </div>
               <div class="pt-6">
-                <a class="btn" href={`/blog/${post.slug}`}>
+                <a class="btn" href={`/blog/${post.id}`}>
                   Read this post
                 </a>
               </div>

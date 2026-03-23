@@ -36,7 +36,7 @@ function ContactForm({ formId }: { formId: string }) {
               type="text"
               name="name"
               required
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-ember focus:ring-ember sm:text-sm"
             />
             <ValidationError
               prefix="Name"
@@ -58,7 +58,7 @@ function ContactForm({ formId }: { formId: string }) {
               type="email"
               name="email"
               required
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-ember focus:ring-ember sm:text-sm"
             />
             <ValidationError
               prefix="Email"
@@ -80,7 +80,7 @@ function ContactForm({ formId }: { formId: string }) {
               name="message"
               required
               rows={5}
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-ember focus:ring-ember sm:text-sm"
             ></textarea>
             <ValidationError
               prefix="Message"

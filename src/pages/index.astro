@@ -1,11 +1,7 @@
 ---
-import profileImage from "@assets/circle-profile-pic.webp";
-import aboutImage from "@assets/profile-picture-home.webp";
 import Calendar from "@components/icons/Calendar.astro";
-import Newsletter from "@components/sections/Newsletter.astro";
 import WhatPeopleSay from "@components/sections/WhatPeopleSay.astro";
 import SiteLayout from "@layouts/SiteLayout.astro";
-import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import { compareDesc, format } from "date-fns";
 
@@ -22,123 +18,175 @@ const orderedPosts = posts.sort((a, b) =>
   description="I'm a full stack developer and designer based in the United Kingdom. I'm passionate about building and designing modern, accessible, and performant web applications."
   ogImage="/og/home.png"
 >
-  <!-- Hero section -->
-  <section class="bg-hero-gradient">
-    <div
-      class="container flex flex-col space-y-24 py-28 md:flex-row lg:space-y-0 lg:pb-44 lg:pt-48"
-    >
-      <div class="max-w-xl text-white md:max-w-[50%] lg:max-w-xl">
-        <p class="mb-2.5 font-bold lg:text-lg">My name is Rob Cipolla</p>
-        <h1 class="mb-6 text-2xl font-semibold sm:text-5xl">
-          Full-stack web developer and designer
-        </h1>
-        <p class="mb-4">
-          I specialise in user-centric applications. I use technology to drive
-          change, always staying ahead of the curve. Besides work, I'm
-          passionate about knowledge sharing and continuous learning, inspiring
-          others in tech.
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- HERO                                            -->
+  <!-- ════════════════════════════════════════════════ -->
+  <section class="relative overflow-hidden bg-nightfall">
+    <!-- Subtle warm glow -->
+    <div class="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-ember/[0.03]"></div>
+
+    <div class="mx-auto max-w-5xl px-6 pb-20 pt-36 lg:px-8 lg:pb-24 lg:pt-44">
+
+      <!-- Eyebrow -->
+      <p class="mb-6 font-mono text-[11px] uppercase tracking-[0.14em] text-chalk/25">RC · Lexicon</p>
+
+      <!-- Headline — the dictionary device -->
+      <h1 class="font-serif text-4xl leading-[1.05] text-chalk sm:text-5xl lg:text-[3.75rem]">
+        Product Engineer,<br /><em class="text-chalk/50">noun</em>
+      </h1>
+
+      <!-- Phonetics -->
+      <p class="mt-3 font-mono text-[13px] tracking-wide text-ember">/ ˈprɒd.əkt ˌen.dʒɪˈnɪər /</p>
+
+      <!-- Ember rule -->
+      <div class="mt-8 h-0.5 w-8 bg-ember"></div>
+
+      <!-- Definition -->
+      <div class="mt-6 border-l-2 border-ember/50 pl-5">
+        <p class="max-w-lg text-[15px] leading-relaxed text-chalk/50">
+          A software engineer who combines product intuition with full-stack capability — designing, building, and iterating on user-facing features without losing sight of why they exist.
         </p>
-        <p>
-          Currently working with a talented team of developers at <a
-            href="https://locale.co.uk">Locale</a
-          >.
-        </p>
-        <div class="flex space-x-4 pt-8">
-          <a class="btn" href="/about">About me</a>
-          <a class="btn bg-white text-raisin-black" href="/blog">Blog</a>
-        </div>
       </div>
-      <div class="flex md:grow md:items-center md:justify-center">
-        <div class="relative">
-          <div
-            class="absolute -right-6 -top-9 aspect-square w-56 rounded-full bg-primary-teal blur-[58px]"
-          >
-          </div>
-          <div
-            class="absolute -bottom-4 -left-4 aspect-square w-32 rounded-full bg-accent-purple blur-[58px]"
-          >
-          </div>
-          <Image
-            class="relative"
-            loading="eager"
-            src={profileImage}
-            alt="Rob Cipolla professional in an office environment"
-          />
-        </div>
+
+      <!-- Origin -->
+      <p class="mt-6 font-mono text-[11px] text-chalk/25">
+        Origin: Leicester, UK · Currently at <a class="text-ember transition-colors hover:text-ember-light" href="https://locale.co.uk">Locale</a>
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-3 pt-10">
+        <a
+          class="rounded bg-chalk px-5 py-2.5 text-[13px] font-medium text-ink transition-colors hover:bg-ember hover:text-chalk"
+          href="/about"
+        >
+          About me
+        </a>
+        <a
+          class="rounded border border-chalk/15 px-5 py-2.5 text-[13px] font-medium text-chalk/55 transition-all hover:border-chalk/40 hover:text-chalk"
+          href="/blog"
+        >
+          Read the blog
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Recent posts -->
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- RECENT POSTS                                    -->
+  <!-- ════════════════════════════════════════════════ -->
   <section>
-    <div class="container py-12">
-      <h2 class="mb-11 text-center text-3xl font-bold">Recent Posts</h2>
-      <div class="justify-between space-y-8 lg:flex lg:space-y-0">
+    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
+
+      <!-- Section label -->
+      <div class="mb-12 flex items-center gap-3">
+        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-dusk">01 — Recent posts</span>
+        <span class="h-px flex-1 bg-rule"></span>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
-          orderedPosts.slice(0, 3).map((post) => (
-            <article class="flex flex-col justify-between rounded-lg bg-white px-9 py-8 shadow-lg lg:max-w-72">
-              <div class="space-y-4">
-                <h3 class="text-lg font-semibold">{post.data.title}</h3>
-                <div class="flex space-x-2.5">
-                  <Calendar class="h-5 w-5" />
-                  <span>Posted: {format(post.data.date, "dd/MM/yyy")}</span>
+          orderedPosts.slice(0, 3).map((post, i) => (
+            <article class="group relative flex flex-col justify-between rounded-lg border border-rule bg-chalk p-7 transition-all duration-300 hover:border-dusk/40">
+
+              <!-- Ghost numeral -->
+              <span class="pointer-events-none absolute right-5 top-4 select-none font-serif text-[4rem] leading-none text-rule/40">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+
+              <div class="relative space-y-4">
+                <!-- Mono tag -->
+                <span class="inline-block rounded border border-rule px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-dusk">
+                  article
+                </span>
+
+                <h3 class="font-serif text-lg leading-snug text-ink">{post.data.title}</h3>
+
+                <div class="flex items-center gap-2 font-mono text-[11px] text-dusk">
+                  <Calendar class="h-3.5 w-3.5" />
+                  <span>{format(post.data.date, "MMM yyyy")}</span>
                 </div>
               </div>
-              <div class="pt-6">
-                <a class="btn" href={`/blog/${post.slug}`}>
-                  Read this post
+
+              <div class="pt-7">
+                <a
+                  class="inline-flex items-center gap-1.5 text-[13px] font-medium text-ink transition-colors group-hover:text-ember"
+                  href={`/blog/${post.slug}`}
+                >
+                  Read post
+                  <span class="transition-transform duration-200 group-hover:translate-x-0.5">&rarr;</span>
                 </a>
               </div>
             </article>
           ))
         }
       </div>
+
+      <div class="mt-10 text-center">
+        <a
+          class="inline-block rounded border border-rule px-5 py-2.5 text-[13px] font-medium text-dusk transition-all hover:border-ink hover:text-ink"
+          href="/blog"
+        >
+          View all posts
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Sign up to news letter -->
-  <Newsletter />
 
-  <!-- About me -->
-  <section class="bg-white py-16">
-    <div class="container grid items-center gap-4 lg:grid-cols-2">
-      <div class="prose">
-        <h2 class="underline-heading">About me</h2>
-        <p class="text-lg">
-          <strong>
-            Hey I&apos;m Rob, I&apos;m a fullstack developer, designer and
-            digital strategist with over {yearsExperience} years industry experience.
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- ABOUT                                           -->
+  <!-- ════════════════════════════════════════════════ -->
+  <section class="bg-linen">
+    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
+
+      <!-- Section label -->
+      <div class="mb-14 flex items-center gap-3">
+        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-dusk">02 — About</span>
+        <span class="h-px flex-1 bg-rule"></span>
+      </div>
+
+      <div class="max-w-2xl">
+        <!-- Pull quote -->
+        <div class="mb-8 border-l-2 border-ember pl-5">
+          <p class="font-serif text-xl leading-snug text-ink sm:text-2xl">
+            Hey I&apos;m Rob — a fullstack developer, designer and digital strategist with over
+            <strong class="font-semibold">{yearsExperience} years</strong> industry experience.
+          </p>
+        </div>
+
+        <div class="space-y-4 text-[15px] leading-relaxed text-dusk">
+          <p>
             I have a passion for creating modern, clean and user-friendly websites
-            and applications.
-          </strong>
-        </p>
-        <p>
-          I have a wide range of experience both building marketing websites and
-          applications across different technology stacks, in addition, my
-          background working for various types of clientele, ranging from
-          national property developers, the financial industry and SMEs, has
-          given me the ability to adapt to my environment.
-        </p>
-        <p>
-          I have a keen interest in designing and developing flexible design
-          systems and well tested robust backends for projects backed by
-          thorough research and planning.
-        </p>
-        <p>Want to know more? Visit my about page using the link below!</p>
-        <div>
-          <a class="btn no-underline" href="/about">Learn more about Me</a>
+            and applications. My wide range of experience building marketing websites
+            and applications across different technology stacks, combined with my
+            background working for various types of clientele — from national
+            property developers to the financial industry and SMEs — has given me
+            the ability to adapt to any environment.
+          </p>
+          <p>
+            I have a keen interest in designing and developing flexible design
+            systems and well tested robust backends for projects backed by
+            thorough research and planning.
+          </p>
+        </div>
+
+        <div class="pt-8">
+          <a
+            class="inline-flex items-center gap-2 rounded bg-ink px-5 py-2.5 text-[13px] font-medium text-chalk transition-colors hover:bg-ember"
+            href="/about"
+          >
+            More about me
+            <span>&rarr;</span>
+          </a>
         </div>
       </div>
-      <div>
-        <Image
-          class="rounded-lg"
-          src={aboutImage}
-          alt="Rob Cipolla professional in an office environment"
-        />
-      </div>
     </div>
   </section>
 
-  <!-- Recommendations -->
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- RECOMMENDATIONS                                 -->
+  <!-- ════════════════════════════════════════════════ -->
   <WhatPeopleSay />
 </SiteLayout>
