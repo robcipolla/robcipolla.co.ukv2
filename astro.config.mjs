@@ -1,5 +1,5 @@
 import mdx from "@astrojs/mdx";
-import partytown from "@astrojs/partytown";
+
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
@@ -22,7 +22,7 @@ export default defineConfig({
       ],
     ],
   },
-  integrations: [partytown(), sitemap(), mdx(), react()],
+  integrations: [sitemap(), mdx(), react()],
   vite: {
     plugins: [tailwindcss()],
   },

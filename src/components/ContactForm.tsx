@@ -93,7 +93,7 @@ function ContactForm({ formId }: { formId: string }) {
             />
           </div>
 
-          <p className="font-mono text-[10px] text-dusk/60">
+          <p className="font-mono text-[10px] text-dusk">
             By submitting this form you agree your details will be used only for the purpose of your enquiry.
           </p>
 
