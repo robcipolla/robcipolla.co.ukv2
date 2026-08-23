@@ -3,51 +3,65 @@ import Logo from "@components/Logo.astro";
 import LinkedIn from "@components/icons/LinkedIn.astro";
 import X from "@components/icons/X.astro";
 import Github from "@components/icons/Github.astro";
+import LancioMark from "@components/icons/LancioMark.astro";
 ---
 
-<footer class="bg-nightfall">
-  <div class="mx-auto max-w-5xl px-6 py-12 lg:px-8 lg:py-16">
-    <div class="flex flex-col items-center gap-6">
-      <!-- Logo -->
-      <a href="/" aria-label="Home" class="transition-opacity hover:opacity-60">
-        <Logo variant="light" />
-      </a>
-
-      <!-- Social links -->
-      <div class="flex items-center gap-4">
-        <a
-          class="text-chalk/60 transition-colors hover:text-chalk/80"
-          href="https://www.linkedin.com/in/rob-cipolla"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="sr-only">LinkedIn</span>
-          <LinkedIn class="h-4 w-4" />
+<footer class="bg-charcoal text-white">
+  <div class="mx-auto max-w-5xl px-6 py-14 lg:px-8 lg:py-18">
+    <div class="flex flex-col gap-12 border-b border-white/15 pb-12 md:flex-row md:items-start md:justify-between">
+      <div class="max-w-sm">
+        <a href="/" aria-label="Rob Cipolla, home" class="inline-flex min-h-11 items-center">
+          <Logo variant="light" />
         </a>
-        <a
-          class="text-chalk/60 transition-colors hover:text-chalk/80"
-          href="https://twitter.com/robcipolla"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="sr-only">X</span>
-          <X class="h-4 w-4" />
-        </a>
-        <a
-          class="text-chalk/60 transition-colors hover:text-chalk/80"
-          href="https://github.com/robcipolla"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="sr-only">GitHub</span>
-          <Github class="h-4 w-4" />
+        <p class="mt-5 text-base leading-relaxed text-white/65">
+          Product engineer in Leicester. I design and build web products, and write about the decisions behind them.
+        </p>
+        <a class="mt-5 inline-block font-semibold text-white underline decoration-white/40 underline-offset-4 hover:decoration-white" href="mailto:hello@robcipolla.co.uk">
+          hello@robcipolla.co.uk
         </a>
       </div>
 
-      <!-- Copyright -->
-      <p class="font-mono text-xs text-chalk/50">
-        &copy; {new Date().getFullYear()} Rob Cipolla.
-      </p>
+      <div class="flex gap-16">
+        <nav aria-label="Footer navigation">
+          <p class="font-semibold text-white">Explore</p>
+          <ul class="mt-4 space-y-3 text-sm text-white/65">
+            <li><a class="hover:text-white" href="/about">About</a></li>
+            <li><a class="hover:text-white" href="/blog">Writing</a></li>
+            <li><a class="hover:text-white" href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div>
+          <p class="font-semibold text-white">Elsewhere</p>
+          <div class="mt-2 flex gap-1">
+            <a class="flex h-11 w-11 items-center justify-center text-white/65 hover:text-white" href="https://www.linkedin.com/in/rob-cipolla" target="_blank" rel="noopener noreferrer">
+              <span class="sr-only">LinkedIn</span>
+              <LinkedIn class="h-4 w-4" />
+            </a>
+            <a class="flex h-11 w-11 items-center justify-center text-white/65 hover:text-white" href="https://x.com/robcipolla" target="_blank" rel="noopener noreferrer">
+              <span class="sr-only">X</span>
+              <X class="h-4 w-4" />
+            </a>
+            <a class="flex h-11 w-11 items-center justify-center text-white/65 hover:text-white" href="https://github.com/robcipolla" target="_blank" rel="noopener noreferrer">
+              <span class="sr-only">GitHub</span>
+              <Github class="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-5 pt-7 text-sm text-white/55 sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; {new Date().getFullYear()} Rob Cipolla</p>
+      <a
+        class="inline-flex items-center gap-2 text-white/70 transition-colors hover:text-white"
+        href="https://lancio.studio"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <LancioMark class="h-5 w-5" />
+        <span>Client projects through <strong class="font-semibold text-white">Lancio Studio</strong></span>
+      </a>
     </div>
   </div>
 </footer>

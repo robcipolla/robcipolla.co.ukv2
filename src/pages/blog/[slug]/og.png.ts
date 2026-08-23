@@ -3,10 +3,7 @@ export const prerender = true;
 import { getCollection, type CollectionEntry } from "astro:content";
 import { ImageResponse } from "@vercel/og";
 import type { ReactElement } from "react";
-import {
-  createOGEReactElement,
-  loadGoogleFont,
-} from "@utils/openGraphHelpers";
+import { createOGEReactElement, loadGoogleFont } from "@utils/openGraphHelpers";
 
 interface Props {
   params: { slug: string };
@@ -16,9 +13,9 @@ interface Props {
 export async function GET({ props }: Props) {
   const { post } = props;
 
-  const [fontNormal, fontItalic] = await Promise.all([
-    loadGoogleFont("DM Serif Display", false),
-    loadGoogleFont("DM Serif Display", true),
+  const [fontNormal, fontBold] = await Promise.all([
+    loadGoogleFont("DM Sans", false, 400),
+    loadGoogleFont("DM Sans", false, 700),
   ]);
 
   const reactElement: ReactElement = createOGEReactElement(
@@ -30,8 +27,8 @@ export async function GET({ props }: Props) {
     width: 1200,
     height: 600,
     fonts: [
-      { name: "DM Serif Display", data: fontNormal, style: "normal", weight: 400 },
-      { name: "DM Serif Display", data: fontItalic, style: "italic", weight: 400 },
+      { name: "DM Sans", data: fontNormal, style: "normal", weight: 400 },
+      { name: "DM Sans", data: fontBold, style: "normal", weight: 700 },
     ],
   });
 }

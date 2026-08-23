@@ -1,0 +1,54 @@
+<form
+  name="personal-contact"
+  method="POST"
+  action="/thanks"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  class="flex flex-col gap-5"
+>
+  <input type="hidden" name="form-name" value="personal-contact" />
+  <p class="hidden" aria-hidden="true">
+    <label>Do not fill this in: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+  </p>
+
+  <div class="flex flex-col gap-2">
+    <label for="name" class="text-sm font-semibold text-ink">Name</label>
+    <input
+      id="name"
+      type="text"
+      name="name"
+      autocomplete="name"
+      required
+      class="block min-h-12 w-full rounded border border-border bg-white px-4 py-3 text-base text-ink shadow-none transition-colors focus:border-ink focus:ring-1 focus:ring-ink"
+    />
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <label for="email" class="text-sm font-semibold text-ink">Email</label>
+    <input
+      id="email"
+      type="email"
+      name="email"
+      autocomplete="email"
+      required
+      class="block min-h-12 w-full rounded border border-border bg-white px-4 py-3 text-base text-ink shadow-none transition-colors focus:border-ink focus:ring-1 focus:ring-ink"
+    />
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <label for="message" class="text-sm font-semibold text-ink">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      required
+      rows="6"
+      class="block w-full rounded border border-border bg-white px-4 py-3 text-base text-ink shadow-none transition-colors focus:border-ink focus:ring-1 focus:ring-ink"
+    ></textarea>
+  </div>
+
+  <p class="text-sm leading-relaxed text-muted">
+    I will use these details only to reply to your enquiry.
+  </p>
+
+  <button class="btn self-start" type="submit">Send message</button>
+</form>

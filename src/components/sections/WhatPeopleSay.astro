@@ -2,46 +2,52 @@
 import LinkedIn from "@components/icons/LinkedIn.astro";
 import recommendations from "@utils/constants/recommendations.json";
 
-const recommends = recommendations.recommendations;
+const [featured, ...others] = recommendations.recommendations;
 ---
 
-<section>
-  <div class="mx-auto max-w-5xl px-6 py-16 lg:px-8 lg:py-20">
+<section class="bg-canvas">
+  <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
+    <h2 class="section-heading">What people say</h2>
 
-    <!-- Section label -->
-    <div class="mb-12 flex items-center gap-3">
-      <span class="font-mono text-xs uppercase tracking-[0.12em] text-dusk">04. Recommendations</span>
-      <span class="h-px flex-1 bg-rule"></span>
+    <div class="mt-12 grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
+      <figure>
+        <blockquote class="text-2xl font-semibold leading-snug tracking-[-0.025em] text-ink sm:text-3xl">
+          "{featured.text}"
+        </blockquote>
+        <figcaption class="mt-7 flex items-center gap-3">
+          <div>
+            <p class="font-semibold text-ink">{featured.name}</p>
+            <p class="mt-1 text-sm text-muted">{featured.role}</p>
+          </div>
+          <a class="flex h-11 w-11 items-center justify-center text-muted hover:text-ink" href={featured.link} target="_blank" rel="noopener noreferrer">
+            <span class="sr-only">View {featured.name} on LinkedIn</span>
+            <LinkedIn class="h-4 w-4" />
+          </a>
+        </figcaption>
+      </figure>
+
+      <div class="border-t border-border lg:border-t-0">
+        {others.map((recommend) => (
+          <figure class="border-b border-border py-7 first:pt-7 lg:first:pt-0">
+            <blockquote class="text-base leading-relaxed text-muted">"{recommend.text}"</blockquote>
+            <figcaption class="mt-5 flex items-start justify-between gap-4">
+              <div>
+                <p class="font-semibold text-ink">{recommend.name}</p>
+                <p class="mt-1 text-sm text-muted">{recommend.role}</p>
+              </div>
+              <a class="flex h-11 w-11 shrink-0 items-center justify-center text-muted hover:text-ink" href={recommend.link} target="_blank" rel="noopener noreferrer">
+                <span class="sr-only">View {recommend.name} on LinkedIn</span>
+                <LinkedIn class="h-4 w-4" />
+              </a>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
     </div>
 
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        recommends.map((recommend) => (
-          <article class="flex flex-col justify-between rounded-lg border border-rule bg-chalk p-6 transition-colors duration-300 hover:border-dusk/40 lg:p-7">
-            <div>
-              <div class="flex items-start justify-between gap-3">
-                <div>
-                  <h2 class="text-base font-semibold text-ink">{recommend.name}</h2>
-                  <p class="mt-0.5 font-mono text-xs tracking-wide text-dusk">{recommend.role}</p>
-                </div>
-                <a
-                  href={recommend.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="mt-0.5 shrink-0 text-[#0077B5] transition-opacity hover:opacity-60"
-                >
-                  <span class="sr-only">View {recommend.name}'s LinkedIn</span>
-                  <LinkedIn class="h-4 w-4" />
-                </a>
-              </div>
-
-              <p class="mt-4 text-base leading-relaxed text-dusk">
-                "{recommend.text}"
-              </p>
-            </div>
-          </article>
-        ))
-      }
+    <div class="mt-16 flex flex-col gap-5 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
+      <p class="max-w-xl text-lg font-semibold text-ink">Want to know how I work before getting in touch?</p>
+      <a class="btn-ghost shrink-0" href="/about">Read about my background</a>
     </div>
   </div>
 </section>

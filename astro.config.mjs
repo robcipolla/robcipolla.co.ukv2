@@ -1,8 +1,6 @@
 import mdx from "@astrojs/mdx";
 
-import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel";
 import { defineConfig, fontProviders } from "astro/config";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkToc from "remark-toc";
@@ -22,41 +20,20 @@ export default defineConfig({
       ],
     ],
   },
-  integrations: [sitemap(), mdx(), react()],
+  integrations: [sitemap(), mdx()],
   vite: {
     plugins: [tailwindcss()],
   },
   fonts: [
     {
       provider: fontProviders.google(),
-      name: "DM Serif Display",
-      cssVariable: "--font-dm-serif",
-      weights: [400],
-      styles: ["normal", "italic"],
-      subsets: ["latin"],
-      fallbacks: ["Georgia", "serif"],
-    },
-    {
-      provider: fontProviders.google(),
       name: "DM Sans",
       cssVariable: "--font-dm-sans",
-      weights: [300, 400, 500, 600],
-      styles: ["normal", "italic"],
+      weights: [400, 600, 700],
+      styles: ["normal"],
       subsets: ["latin"],
       fallbacks: ["system-ui", "sans-serif"],
     },
-    {
-      provider: fontProviders.google(),
-      name: "DM Mono",
-      cssVariable: "--font-dm-mono",
-      weights: [400, 500],
-      styles: ["normal"],
-      subsets: ["latin"],
-      fallbacks: ["Fira Code", "monospace"],
-    },
   ],
-  output: "server",
-  adapter: vercel({
-    webAnalytics: { enabled: true },
-  }),
+  output: "static",
 });

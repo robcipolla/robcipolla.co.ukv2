@@ -1,0 +1,23 @@
+---
+import SiteLayout from "@layouts/SiteLayout.astro";
+---
+
+<SiteLayout
+  title="Message sent | Rob Cipolla"
+  description="Your message has been sent to Rob Cipolla."
+  ogImage="/og/contact.png"
+>
+  <section class="bg-charcoal text-white">
+    <div class="mx-auto max-w-5xl px-6 pb-18 pt-32 lg:px-8 lg:pb-24 lg:pt-40">
+      <h1 class="max-w-3xl text-[clamp(3rem,7vw,5rem)] font-bold leading-[0.96] tracking-[-0.04em]">Message sent</h1>
+      <p class="mt-7 max-w-xl text-xl leading-relaxed text-white/70">Thanks. I will reply as soon as I can.</p>
+    </div>
+  </section>
+
+  <section class="bg-canvas">
+    <div class="mx-auto flex max-w-5xl flex-wrap gap-3 px-6 py-12 lg:px-8 lg:py-16">
+      <a class="btn" href="/">Go home</a>
+      <a class="btn-ghost" href="/blog">Read the blog</a>
+    </div>
+  </section>
+</SiteLayout>

@@ -1,12 +1,15 @@
 ---
-import Calendar from "@components/icons/Calendar.astro";
 import WhatPeopleSay from "@components/sections/WhatPeopleSay.astro";
+import LancioMark from "@components/icons/LancioMark.astro";
 import SiteLayout from "@layouts/SiteLayout.astro";
+import profilePicture from "@assets/profile-picture-home.webp";
+import inspiringLeadersImage from "@assets/lancio-studio/inspiring-leaders.webp";
+import jamesWhitingImage from "@assets/lancio-studio/james-whiting-fitness.webp";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import { compareDesc, format } from "date-fns";
 
 const yearsExperience = new Date().getFullYear() - 2016;
-
 const posts = await getCollection("blog");
 const orderedPosts = posts.sort((a, b) =>
   compareDesc(new Date(a.data.date), new Date(b.data.date))
@@ -15,7 +18,7 @@ const orderedPosts = posts.sort((a, b) =>
 
 <SiteLayout
   title="Rob Cipolla | Product Engineer"
-  description="Product engineer and designer. I build user-facing software with a focus on craft, performance, and product thinking."
+  description="Product engineer in Leicester, designing and building web products. Client projects are accepted through Lancio Studio."
   ogImage="/og/home.png"
 >
   <script type="application/ld+json" set:html={JSON.stringify({
@@ -31,203 +34,141 @@ const orderedPosts = posts.sort((a, b) =>
       "sameAs": [
         "https://www.linkedin.com/in/rob-cipolla",
         "https://github.com/robcipolla",
-        "https://twitter.com/robcipolla"
+        "https://x.com/robcipolla"
       ]
     }
   })} />
-  <!-- ════════════════════════════════════════════════ -->
-  <!-- HERO                                            -->
-  <!-- ════════════════════════════════════════════════ -->
-  <section class="relative overflow-hidden bg-nightfall">
-    <div class="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-ember/[0.03]"></div>
 
-    <div class="mx-auto max-w-5xl px-6 pb-14 pt-36 lg:px-8 lg:pb-16 lg:pt-44">
-
-      <!-- Eyebrow -->
-      <p class="mb-6 font-mono text-xs uppercase tracking-[0.14em] text-chalk/60">Rob Cipolla · Lexicon</p>
-
-      <!-- Headline — the dictionary device -->
-      <h1 class="font-serif text-4xl leading-[1.05] text-chalk sm:text-5xl lg:text-6xl">
-        Product Engineer,<br /><em class="text-chalk/80">noun</em>
-      </h1>
-
-      <!-- Phonetics -->
-      <p class="mt-3 font-mono text-sm tracking-wide text-ember-a11y">/ ˈprɒd.əkt ˌen.dʒɪˈnɪər /</p>
-
-      <!-- Ember rule -->
-      <div class="mt-8 h-0.5 w-8 bg-ember"></div>
-
-      <!-- Definition -->
-      <div class="mt-6 border-l-2 border-ember/50 pl-5">
-        <p class="max-w-lg text-base leading-relaxed text-chalk/65">
-          A software engineer who combines product intuition with full-stack capability, designing, building, and iterating on user-facing features without losing sight of why they exist.
+  <section class="bg-charcoal text-white">
+    <div class="mx-auto grid min-h-[760px] max-w-5xl items-end gap-12 px-6 pb-14 pt-32 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:px-8 lg:pb-18 lg:pt-40">
+      <div class="pb-2 lg:pb-8">
+        <h1 class="max-w-3xl text-[clamp(3rem,7vw,5rem)] font-bold leading-[0.96] tracking-[-0.04em]">
+          Product Engineer, <span class="font-normal text-white/70">noun</span>
+        </h1>
+        <p class="mt-4 text-lg text-white/65">PROD-ukt en-jih-NEER</p>
+        <p class="mt-8 max-w-xl text-lg leading-relaxed text-white/78">
+          I design and build web products. Most of the hard work happens before the code: deciding what belongs, what does not, and how the thing should behave.
         </p>
+        <p class="mt-6 max-w-xl text-base leading-relaxed text-white/60">
+          Based in Leicester, with {yearsExperience}+ years working across product design and full-stack development. Currently at <a class="font-semibold text-white underline decoration-white/35 underline-offset-4 hover:decoration-white" href="https://locale.co.uk">Locale</a>.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a class="btn btn-light" href="#work">See selected work</a>
+          <a class="inline-flex min-h-11 items-center px-3 font-semibold text-white underline decoration-white/35 underline-offset-4 hover:decoration-white" href="/about">More about me</a>
+        </div>
       </div>
 
-      <!-- Origin -->
-      <p class="mt-6 font-mono text-sm text-chalk/60">
-        Rob Cipolla. Leicester, UK. 10+ years building for the web. Currently at <a class="text-ember-a11y transition-colors hover:text-ember-light" href="https://locale.co.uk">Locale</a>.
-      </p>
-
-      <!-- CTAs -->
-      <div class="flex flex-wrap gap-3 pt-10">
-        <a
-          class="rounded bg-chalk px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-ember hover:text-chalk"
-          href="/about"
-        >
-          About me
-        </a>
-        <a
-          class="rounded border border-chalk/15 px-5 py-2.5 text-sm font-medium text-chalk/65 transition-all hover:border-chalk/40 hover:text-chalk"
-          href="/blog"
-        >
-          Read the blog
-        </a>
+      <div class="relative mx-auto w-full max-w-md lg:mx-0">
+        <Image
+          src={profilePicture}
+          alt="Rob Cipolla standing beside a window"
+          widths={[480, 720, 960]}
+          sizes="(min-width: 1024px) 36vw, 90vw"
+          class="aspect-[4/5] w-full rounded-[2px] object-cover object-center"
+          loading="eager"
+        />
       </div>
     </div>
   </section>
 
-
-  <!-- ════════════════════════════════════════════════ -->
-  <!-- RECENT POSTS                                    -->
-  <!-- ════════════════════════════════════════════════ -->
-  <section>
-    <div class="mx-auto max-w-5xl px-6 py-16 lg:px-8 lg:py-20">
-
-      <!-- Section label -->
-      <div class="mb-12 flex items-center gap-3">
-        <span class="font-mono text-xs uppercase tracking-[0.12em] text-dusk">01. Recent posts</span>
-        <span class="h-px flex-1 bg-rule"></span>
-      </div>
-
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          orderedPosts.slice(0, 3).map((post, i) => (
-            <article class="group relative flex flex-col justify-between rounded-lg border border-rule bg-chalk p-7 transition-all duration-300 hover:border-dusk/40">
-
-              <!-- Ghost numeral -->
-              <span class="pointer-events-none absolute right-5 top-4 select-none font-serif text-7xl leading-none text-rule/40">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-
-              <div class="relative space-y-4">
-                <!-- Mono tag -->
-                <span class="inline-block rounded border border-rule px-2 py-0.5 font-mono text-xs uppercase tracking-wider text-dusk">
-                  article
-                </span>
-
-                <h2 class="font-serif text-lg leading-snug text-ink">{post.data.title}</h2>
-
-                <div class="flex items-center gap-2 font-mono text-xs text-dusk">
-                  <Calendar class="h-3.5 w-3.5" />
-                  <span>{format(post.data.date, "MMM yyyy")}</span>
-                </div>
-              </div>
-
-              <div class="pt-7">
-                <a
-                  class="inline-flex items-center gap-1.5 text-sm font-medium text-ink transition-colors group-hover:text-ember"
-                  href={`/blog/${post.id}`}
-                >
-                  Read post
-                  <span class="transition-transform duration-200 group-hover:translate-x-0.5">&rarr;</span>
-                </a>
-              </div>
-            </article>
-          ))
-        }
-      </div>
-
-      <div class="mt-10 text-center">
-        <a
-          class="inline-block rounded border border-rule px-5 py-2.5 text-sm font-medium text-dusk transition-all hover:border-ink hover:text-ink"
-          href="/blog"
-        >
-          View all posts
-        </a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ════════════════════════════════════════════════ -->
-  <!-- SERVICES                                        -->
-  <!-- ════════════════════════════════════════════════ -->
-  <section class="bg-nightfall">
-    <div class="mx-auto max-w-5xl px-6 py-16 lg:px-8 lg:py-20">
-
-      <!-- Section label -->
-      <div class="mb-12 flex items-center gap-3">
-        <span class="font-mono text-xs uppercase tracking-[0.12em] text-chalk/60">02. Services</span>
-        <span class="h-px flex-1 bg-chalk/[0.06]"></span>
-      </div>
-
-      <div class="max-w-2xl">
-        <!-- Pull quote -->
-        <div class="mb-6 border-l-2 border-ember/60 pl-5">
-          <p class="font-serif text-xl leading-snug text-chalk sm:text-2xl">
-            I take on select freelance projects: websites, apps, and digital products where design and engineering need to work together.
+  <section id="work" class="bg-canvas">
+    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 class="section-heading">Selected client work</h2>
+          <p class="mt-5 max-w-xl text-base leading-relaxed text-muted">
+            Work completed through <a class="font-semibold text-ink underline underline-offset-4" href="https://lancio.studio" target="_blank" rel="noopener noreferrer">Lancio Studio</a>, where I take on projects outside my day job.
           </p>
         </div>
+        <a class="text-link shrink-0" href="https://lancio.studio/work/" target="_blank" rel="noopener noreferrer">See all Lancio work <span aria-hidden="true">↗</span></a>
+      </div>
 
-        <p class="text-base leading-relaxed text-chalk/60">
-          If you have something you'd like to bring to life, I'd love to hear about it.
-        </p>
-
-        <div class="pt-8">
-          <a
-            class="inline-flex items-center gap-2 rounded border border-chalk/15 px-5 py-2.5 text-sm font-medium text-chalk/75 transition-all hover:border-ember hover:text-ember-a11y"
-            href="/contact"
-          >
-            Get in touch
-            <span>&rarr;</span>
+      <div class="mt-14 space-y-20 lg:mt-18 lg:space-y-28">
+        <article class="grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
+          <a href="https://lancio.studio/work/inspiring-leaders-today/" target="_blank" rel="noopener noreferrer" aria-label="Read the Inspiring Leaders case study at Lancio Studio">
+            <Image
+              src={inspiringLeadersImage}
+              alt="The Inspiring Leaders CPD booking platform homepage"
+              widths={[640, 960, 1280]}
+              sizes="(min-width: 1024px) 58vw, 100vw"
+              class="aspect-[16/9] w-full rounded-[2px] object-cover"
+            />
           </a>
+          <div>
+            <p class="text-sm font-semibold text-muted">Web application</p>
+            <h3 class="mt-3 text-3xl font-bold tracking-[-0.03em] text-ink">Inspiring Leaders</h3>
+            <p class="mt-5 text-base leading-relaxed text-muted">
+              A CPD booking platform and admin system used across an East Midlands education partnership. I helped turn a manual process into one clear booking flow.
+            </p>
+            <a class="text-link mt-6" href="https://lancio.studio/work/inspiring-leaders-today/" target="_blank" rel="noopener noreferrer">Read the case study <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+
+        <article class="grid items-center gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+          <div class="lg:order-1">
+            <p class="text-sm font-semibold text-muted">Brand and website</p>
+            <h3 class="mt-3 text-3xl font-bold tracking-[-0.03em] text-ink">James Whiting Fitness</h3>
+            <p class="mt-5 text-base leading-relaxed text-muted">
+              A new identity and one-page website built around a single job: turning personal recommendations into consultation bookings.
+            </p>
+            <a class="text-link mt-6" href="https://lancio.studio/work/james-whiting-fitness/" target="_blank" rel="noopener noreferrer">Read the case study <span aria-hidden="true">↗</span></a>
+          </div>
+          <a class="lg:order-2" href="https://lancio.studio/work/james-whiting-fitness/" target="_blank" rel="noopener noreferrer" aria-label="Read the James Whiting Fitness case study at Lancio Studio">
+            <Image
+              src={jamesWhitingImage}
+              alt="The James Whiting Fitness website homepage"
+              widths={[640, 960, 1280]}
+              sizes="(min-width: 1024px) 58vw, 100vw"
+              class="aspect-[16/9] w-full rounded-[2px] object-cover object-top"
+            />
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 class="section-heading">Recent writing</h2>
+          <p class="mt-5 max-w-lg text-base leading-relaxed text-muted">Notes on product engineering, interface decisions and the parts of development that are worth arguing about.</p>
+        </div>
+        <a class="text-link shrink-0" href="/blog">Browse all posts</a>
+      </div>
+
+      <div class="mt-12 border-t border-border">
+        {orderedPosts.slice(0, 3).map((post) => (
+          <article class="group grid gap-3 border-b border-border py-7 sm:grid-cols-[9rem_1fr_auto] sm:items-center">
+            <time class="text-sm text-muted" datetime={post.data.date.toISOString()}>{format(post.data.date, "MMM d, yyyy")}</time>
+            <h3 class="text-xl font-semibold leading-snug tracking-[-0.02em] text-ink">
+              <a class="transition-opacity group-hover:opacity-65" href={`/blog/${post.id}`}>{post.data.title}</a>
+            </h3>
+            <span class="hidden text-xl transition-transform group-hover:translate-x-1 sm:block" aria-hidden="true">→</span>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-soft">
+    <div class="mx-auto grid max-w-5xl gap-10 px-6 py-20 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-20 lg:px-8 lg:py-24">
+      <div class="flex items-center gap-4">
+        <LancioMark class="h-16 w-16 shrink-0" />
+        <p class="text-xl font-bold tracking-[-0.02em]">Lancio Studio</p>
+      </div>
+      <div>
+        <h2 class="text-3xl font-bold leading-tight tracking-[-0.03em] sm:text-4xl">I take on client projects through Lancio.</h2>
+        <p class="mt-5 max-w-xl text-base leading-relaxed text-muted">
+          Lancio is the small studio I run alongside my product engineering work. We design and build websites, web apps and brands for growing businesses.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a class="btn" href="https://lancio.studio/contact/" target="_blank" rel="noopener noreferrer">Start a project <span aria-hidden="true">↗</span></a>
+          <a class="btn-ghost" href="https://lancio.studio" target="_blank" rel="noopener noreferrer">Visit Lancio Studio</a>
         </div>
       </div>
     </div>
   </section>
 
-
-  <!-- ════════════════════════════════════════════════ -->
-  <!-- ABOUT                                           -->
-  <!-- ════════════════════════════════════════════════ -->
-  <section>
-    <div class="mx-auto max-w-5xl px-6 py-16 lg:px-8 lg:py-20">
-
-      <!-- Section label -->
-      <div class="mb-12 flex items-center gap-3">
-        <span class="font-mono text-xs uppercase tracking-[0.12em] text-dusk">03. About</span>
-        <span class="h-px flex-1 bg-rule"></span>
-      </div>
-
-      <div class="max-w-2xl">
-        <!-- Pull quote -->
-        <div class="mb-6 border-l-2 border-ember pl-5">
-          <p class="font-serif text-xl leading-snug text-ink sm:text-2xl">
-            Product engineer and designer with over {yearsExperience} years of experience shipping software that works as well as it looks.
-          </p>
-        </div>
-
-        <p class="text-base leading-relaxed text-dusk">
-          I work across the full stack: React, Next.js, TypeScript on the front, Node on the back. The bit I care about most is where design and engineering meet: building interfaces that feel considered, backed by systems that hold up.
-        </p>
-
-        <div class="pt-8">
-          <a
-            class="inline-flex items-center gap-2 rounded bg-ink px-5 py-2.5 text-sm font-medium text-chalk transition-colors hover:bg-ember"
-            href="/about"
-          >
-            More about me
-            <span>&rarr;</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ════════════════════════════════════════════════ -->
-  <!-- RECOMMENDATIONS                                 -->
-  <!-- ════════════════════════════════════════════════ -->
   <WhatPeopleSay />
 </SiteLayout>

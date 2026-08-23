@@ -7,26 +7,19 @@ interface Props {
   last?: boolean;
 }
 
-const { title, date, company, year, last } = Astro.props;
+const { title, date, company, year } = Astro.props;
 ---
 
-<div class="relative mb-8 flex">
-  <div
-    class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-ember text-chalk font-mono text-xs"
-  >
-    {year}
+<article class="grid gap-4 border-b border-border py-8 md:grid-cols-[7rem_1fr] md:gap-8">
+  <div>
+    <p class="text-sm font-semibold text-muted">{year}</p>
   </div>
-  <div
-    class=`absolute left-6 top-12 border-l-2 border-dotted border-ember/50 ${last ? 'h-[85%]' : 'h-full'}`
-  >
-  </div>
-  <div class="timeline-content ml-4 md:ml-8">
-    <div class="text-sm font-mono text-ember">
-      {date}
-    </div>
-    <h3 class="font-serif text-lg text-ink">{title}, {company}</h3>
-    <div class="mt-2 space-y-2 text-base leading-relaxed text-dusk">
+  <div>
+    <p class="text-sm text-muted">{date}</p>
+    <h3 class="mt-2 text-xl font-bold tracking-[-0.02em] text-ink">{title}</h3>
+    <p class="mt-1 font-semibold text-muted">{company}</p>
+    <div class="mt-4 space-y-3 text-base leading-relaxed text-muted">
       <slot />
     </div>
   </div>
-</div>
+</article>

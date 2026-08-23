@@ -2,230 +2,126 @@
 import SiteLayout from "@layouts/SiteLayout.astro";
 import TimelineContainer from "@components/TimelineContainer.astro";
 import TimelineItem from "@components/TimelineItem.astro";
+import profilePicture from "@assets/profile-about-page.webp";
+import { Image } from "astro:assets";
 
 const yearsExperience = new Date().getFullYear() - 2016;
 ---
 
 <SiteLayout
   title="About | Rob Cipolla"
-  description={`Product engineer and designer with ${yearsExperience}+ years of experience shipping software that works as well as it looks.`}
+  description={`Product engineer with ${yearsExperience}+ years of experience across product design and full-stack development.`}
   ogImage="/og/about.png"
 >
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Rob Cipolla",
-    "jobTitle": "Senior Full Stack Web Developer",
+    "jobTitle": "Product Engineer",
     "url": "https://www.robcipolla.co.uk",
     "sameAs": [
       "https://www.linkedin.com/in/rob-cipolla",
       "https://github.com/robcipolla",
-      "https://twitter.com/robcipolla"
+      "https://x.com/robcipolla"
     ]
   })} />
-  <!-- Hero -->
-  <section class="relative overflow-hidden bg-nightfall">
-    <div class="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-ember/[0.03]"></div>
 
-    <div class="mx-auto max-w-5xl px-6 pb-20 pt-36 lg:px-8 lg:pb-24 lg:pt-44">
+  <section class="bg-charcoal text-white">
+    <div class="mx-auto grid max-w-5xl items-end gap-12 px-6 pb-14 pt-32 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:px-8 lg:pb-18 lg:pt-40">
+      <div class="lg:order-2 lg:pb-8">
+        <h1 class="text-[clamp(3rem,7vw,5rem)] font-bold leading-[0.96] tracking-[-0.04em]">About me</h1>
+        <p class="mt-8 max-w-xl text-xl leading-relaxed text-white/75">
+          I'm Rob. I design and build software, and I prefer working close to the problem instead of waiting for a finished specification.
+        </p>
+        <p class="mt-6 max-w-xl text-base leading-relaxed text-white/60">
+          That has taken me through design, WordPress, full-stack applications, team leadership and product engineering. The job title changed. The useful part stayed the same: working out what to build and making it hold up.
+        </p>
+      </div>
 
-      <p class="mb-6 font-mono text-xs uppercase tracking-[0.14em] text-chalk/60">RC · Background</p>
-
-      <h1 class="font-serif text-4xl leading-[1.05] text-chalk sm:text-5xl">About me</h1>
-
-      <div class="mt-6 h-0.5 w-8 bg-ember"></div>
-
-      <p class="mt-6 max-w-lg text-base leading-relaxed text-chalk/60">
-        Product engineer and designer with over {yearsExperience} years of experience, from custom WordPress themes to full-stack React applications.
-      </p>
+      <Image
+        src={profilePicture}
+        alt="Rob Cipolla standing beside a window"
+        widths={[520, 780, 1040]}
+        sizes="(min-width: 1024px) 40vw, 100vw"
+        class="aspect-[4/5] w-full rounded-[2px] object-cover lg:order-1"
+        loading="eager"
+      />
     </div>
   </section>
 
-
-  <!-- ════════════════════════════════════════════════ -->
-  <!-- INTRODUCTION                                    -->
-  <!-- ════════════════════════════════════════════════ -->
-  <section>
-    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
-
-      <!-- Section label -->
-      <div class="mb-12 flex items-center gap-3">
-        <h2 class="font-mono text-xs uppercase tracking-[0.12em] text-dusk">01. Introduction</h2>
-        <span class="h-px flex-1 bg-rule"></span>
+  <section class="bg-canvas">
+    <div class="mx-auto grid max-w-5xl gap-10 px-6 py-20 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20 lg:px-8 lg:py-28">
+      <h2 class="section-heading">How I work</h2>
+      <div class="max-w-2xl space-y-5 text-lg leading-relaxed text-muted">
+        <p>
+          I work across product decisions, interface design and full-stack development. React, TypeScript, Node and PHP are regular tools, but the framework is rarely the difficult part. The difficult part is choosing the right behaviour and leaving the code understandable for whoever works on it next.
+        </p>
+        <p>
+          At Locale, I work as a senior full-stack developer with a strong frontend and product focus. For independent client work, I run <a class="font-semibold text-ink underline underline-offset-4" href="https://lancio.studio" target="_blank" rel="noopener noreferrer">Lancio Studio</a>.
+        </p>
       </div>
+    </div>
+  </section>
 
-      <div class="max-w-3xl">
-        <!-- Pull quote -->
-        <div class="mb-8 border-l-2 border-ember/60 pl-5">
-          <p class="font-serif text-xl leading-snug text-ink sm:text-2xl">
-            Hey, I'm Rob, a self-taught fullstack developer, designer and digital strategist with over {yearsExperience} years of industry experience.
-          </p>
+  <section class="bg-white">
+    <div class="mx-auto grid max-w-5xl gap-10 px-6 py-20 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20 lg:px-8 lg:py-28">
+      <h2 class="section-heading">How I got here</h2>
+      <div class="max-w-2xl space-y-5 text-base leading-relaxed text-muted">
+        <p>
+          I started in game art and design, studying concept art, scriptwriting, 3D modelling and level design. I eventually realised I was more interested in making interactive things than building a career in games.
+        </p>
+        <p>
+          I moved to Graphic Design and E-media at Leicester College and De Montfort University. A small JavaScript accordion in one coursework project was enough to pull me towards web development. I completed a further year in Professional Studies for the Creative Industries and graduated with First Class Honours.
+        </p>
+        <p>
+          My first industry role involved building custom WordPress themes for small businesses. Since then I have worked on marketing sites, booking platforms, internal tools and full-stack products, both as an individual contributor and as a team lead.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-canvas">
+    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
+      <div class="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
+        <div>
+          <h2 class="section-heading">Experience</h2>
+          <p class="mt-5 max-w-xs text-base leading-relaxed text-muted">A condensed version. LinkedIn has the full chronology.</p>
+          <a class="text-link mt-6" href="https://www.linkedin.com/in/rob-cipolla" target="_blank" rel="noopener noreferrer">View LinkedIn <span aria-hidden="true">↗</span></a>
         </div>
 
-        <div class="space-y-4 text-base leading-relaxed text-dusk">
-          <p>
-            I have a passion for creating modern, clean and user-friendly websites and applications. I work across the full stack: React, Next.js, TypeScript on the front, Node and PHP on the back. The bit I care about most is where design and engineering meet: building interfaces that feel considered, backed by systems that hold up.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ════════════════════════════════════════════════ -->
-  <!-- HOW I GOT HERE                                  -->
-  <!-- ════════════════════════════════════════════════ -->
-  <section class="bg-nightfall">
-    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
-
-      <!-- Section label -->
-      <div class="mb-12 flex items-center gap-3">
-        <h2 class="font-mono text-xs uppercase tracking-[0.12em] text-chalk/60">02. How I got here</h2>
-        <span class="h-px flex-1 bg-chalk/[0.06]"></span>
-      </div>
-
-      <div class="max-w-3xl space-y-5 text-base leading-relaxed text-chalk/65">
-        <p>
-          I didn't initially see myself in development. Post-high school, I pursued a Game Design BTEC covering various aspects like concept art, scriptwriting, 3D modeling, and level design, with a brief encounter with Game Maker software (no coding involved). My journey took me to DeMontfort University for Game Art Design, focusing more on art and 3D modeling.
-        </p>
-        <p>
-          However, my passion for gaming waned, leading me to switch to a Graphic Design and E-media course offered by Leicester College and De Montfort University. It was here that web development and design piqued my interest, especially when I had to incorporate JavaScript to make accordions work in a website project, igniting my fascination with web development.
-        </p>
-        <p>
-          I completed the Graphic Design & E-media course, followed by a Professional Studies year in the Creative Industries, where I honed skills in creative business management, marketing, branding, and more, earning a First Class Honours. My career began at a Web Design and SEO company, developing custom WordPress themes for small businesses, which paved the way to diverse projects, clients, and programming languages.
-        </p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ════════════════════════════════════════════════ -->
-  <!-- EXPERIENCE                                      -->
-  <!-- ════════════════════════════════════════════════ -->
-  <section>
-    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
-
-      <!-- Section label -->
-      <div class="mb-12 flex items-center gap-3">
-        <h2 class="font-mono text-xs uppercase tracking-[0.12em] text-dusk">03. Experience</h2>
-        <span class="h-px flex-1 bg-rule"></span>
-      </div>
-
-      <div class="max-w-3xl">
         <TimelineContainer>
-          <TimelineItem
-            title="Senior Full Stack Web Developer"
-            date="2025 - Current"
-            company="Locale"
-            year="2025"
-          >
-            <p>
-              Promoted to senior role with increased responsibilities across the codebase, with a focus on frontend development and architecture.
-            </p>
-            <p class="mt-3 font-mono text-xs uppercase tracking-wide text-dusk">Technology</p>
-            <div class="mt-2 flex flex-wrap gap-1.5">
-              {["React", "Node.js", "PHP", "Laravel", "MySQL", "Docker", "CI/CD", "AWS"].map(tech => (
-                <span class="rounded border border-rule px-2 py-0.5 font-mono text-xs text-dusk">{tech}</span>
-              ))}
-            </div>
+          <TimelineItem title="Senior Full Stack Web Developer" date="2025 to present" company="Locale" year="2025">
+            <p>Leading frontend decisions and contributing across the product, from interface behaviour to application architecture.</p>
+            <p class="text-sm">React · Node.js · PHP · Laravel · MySQL · Docker · AWS</p>
           </TimelineItem>
-          <TimelineItem
-            title="Web developer"
-            date="June 2023 - 2025"
-            company="Locale"
-            year="2023"
-          >
-            <p>
-              I joined Locale as a full stack developer with a focus on React
-              development, working to improve, maintain and develop legacy and new
-              features.
-            </p>
-            <p class="mt-3 font-mono text-xs uppercase tracking-wide text-dusk">Technology</p>
-            <div class="mt-2 flex flex-wrap gap-1.5">
-              {["React", "Node.js", "PHP", "Laravel", "MySQL", "Docker"].map(tech => (
-                <span class="rounded border border-rule px-2 py-0.5 font-mono text-xs text-dusk">{tech}</span>
-              ))}
-            </div>
+          <TimelineItem title="Web Developer" date="June 2023 to 2025" company="Locale" year="2023">
+            <p>Joined the product team to improve and extend a mix of established and new React and Laravel features.</p>
+            <p class="text-sm">React · Node.js · PHP · Laravel · MySQL · Docker</p>
           </TimelineItem>
-          <TimelineItem
-            title="Head of Web"
-            date="Sep 2019 - June 2023"
-            company="Reach Marketing Communications"
-            year="2023"
-          >
-            <p>
-              Responsible for overseeing the project lifecycle, from initiation and development to the enhancement and maintenance of the company's websites. Successfully mentored junior developers, introduced project management tools and GIT version control, and led the strategic transition of hosting to AWS and the shift to JAMstack technologies.
-            </p>
-            <p class="mt-3 font-mono text-xs uppercase tracking-wide text-dusk">Technology</p>
-            <div class="mt-2 flex flex-wrap gap-1.5">
-              {["React", "Next.js", "Astro", "Node.js", "PHP", "TypeScript", "AWS", "TailwindCSS", "WordPress", "Docker"].map(tech => (
-                <span class="rounded border border-rule px-2 py-0.5 font-mono text-xs text-dusk">{tech}</span>
-              ))}
-            </div>
+          <TimelineItem title="Head of Web" date="September 2019 to June 2023" company="Reach Marketing Communications" year="2019">
+            <p>Led website delivery, mentored developers and moved the team towards version control, AWS hosting and component-led frontend work.</p>
+            <p class="text-sm">React · Next.js · Astro · Node.js · TypeScript · AWS · WordPress</p>
           </TimelineItem>
-          <TimelineItem
-            title="Web designer / developer"
-            date="Nov 2017 - Jul 2019"
-            company="Success Local Limited"
-            year="2017"
-          >
-            <p>
-              Part of a nimble team of designer/developers, specialising in crafting marketing-centric WordPress websites. Introduced GIT version control with Bitbucket and frequently shepherded websites from wireframe to production build.
-            </p>
-            <p class="mt-3 font-mono text-xs uppercase tracking-wide text-dusk">Technology</p>
-            <div class="mt-2 flex flex-wrap gap-1.5">
-              {["PHP", "MySQL", "WordPress", "SCSS", "JavaScript", "jQuery"].map(tech => (
-                <span class="rounded border border-rule px-2 py-0.5 font-mono text-xs text-dusk">{tech}</span>
-              ))}
-            </div>
+          <TimelineItem title="Web Designer and Developer" date="November 2017 to July 2019" company="Success Local Limited" year="2017">
+            <p>Designed and built custom WordPress websites for small businesses, taking projects from wireframe to launch.</p>
+            <p class="text-sm">PHP · MySQL · WordPress · SCSS · JavaScript</p>
           </TimelineItem>
-          <TimelineItem
-            title="Web designer / developer"
-            date="Nov 2017 - Jul 2019"
-            company="Rob Cipolla Design"
-            year="2015"
-            last
-          >
-            <p>
-              Freelance web designer focusing on WordPress theme building. Built a collaborative link with my university, receiving referrals to assist students in creating personal portfolio websites.
-            </p>
-            <p class="mt-3 font-mono text-xs uppercase tracking-wide text-dusk">Technology</p>
-            <div class="mt-2 flex flex-wrap gap-1.5">
-              {["PHP", "MySQL", "WordPress", "CSS", "JavaScript"].map(tech => (
-                <span class="rounded border border-rule px-2 py-0.5 font-mono text-xs text-dusk">{tech}</span>
-              ))}
-            </div>
+          <TimelineItem title="Freelance Web Designer" date="2015 to 2017" company="Rob Cipolla Design" year="2015">
+            <p>Built WordPress themes and portfolio websites, including referred projects for university students.</p>
+            <p class="text-sm">PHP · MySQL · WordPress · CSS · JavaScript</p>
           </TimelineItem>
         </TimelineContainer>
       </div>
     </div>
   </section>
 
-
-  <!-- ════════════════════════════════════════════════ -->
-  <!-- EDUCATION (commented out)                       -->
-  <!-- ════════════════════════════════════════════════
-  <section class="bg-nightfall">
-    <div class="mx-auto max-w-5xl px-6 py-20 lg:px-8 lg:py-28">
-      <div class="mb-12 flex items-center gap-3">
-        <span class="font-mono text-xs uppercase tracking-[0.12em] text-chalk/50">04. Education</span>
-        <span class="h-px flex-1 bg-chalk/[0.06]"></span>
+  <section class="bg-soft">
+    <div class="mx-auto flex max-w-5xl flex-col gap-7 px-6 py-16 sm:flex-row sm:items-center sm:justify-between lg:px-8 lg:py-20">
+      <div>
+        <h2 class="text-3xl font-bold tracking-[-0.03em]">Have something to talk about?</h2>
+        <p class="mt-3 text-base text-muted">Work, product engineering, or the unusually hard parts of seemingly simple interfaces.</p>
       </div>
-      <div class="max-w-3xl">
-        <article class="rounded-lg border border-chalk/[0.06] p-6 lg:p-8">
-          <span class="inline-block rounded border border-chalk/15 px-2 py-0.5 font-mono text-xs uppercase tracking-wider text-chalk/60">
-            1st Class Honours
-          </span>
-          <h3 class="mt-4 font-serif text-lg text-chalk">De Montfort University</h3>
-          <p class="mt-1 font-mono text-xs tracking-wide text-chalk/50">BA Professional Studies (Creative Industries)</p>
-          <ul class="mt-5 space-y-2 text-base leading-relaxed text-chalk/50">
-            <li>Worked with Leicester University to create a marketing campaign to help with racism in Leicester</li>
-            <li>Worked with various creatives from different backgrounds</li>
-            <li>Entered from a Graphic Design and E-Media Foundation Degree</li>
-          </ul>
-        </article>
-      </div>
+      <a class="btn shrink-0" href="/contact">Contact me</a>
     </div>
   </section>
-  -->
 </SiteLayout>

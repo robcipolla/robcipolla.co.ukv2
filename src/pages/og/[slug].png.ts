@@ -1,23 +1,20 @@
 export const prerender = true;
 
-import {
-  createOGEReactElement,
-  loadGoogleFont,
-} from "@utils/openGraphHelpers";
+import { createOGEReactElement, loadGoogleFont } from "@utils/openGraphHelpers";
 import { ImageResponse } from "@vercel/og";
 import type { ReactElement } from "react";
 
 // Title shown as the large headline (empty = shows "Rob Cipolla")
 const PAGE_TITLES: Record<string, string> = {
-  home: "",
-  about: "About Rob",
-  blog: "Blog",
-  contact: "Get in Touch",
+  home: "Product Engineer, noun",
+  about: "About me",
+  blog: "Writing",
+  contact: "Contact",
 };
 
 // Label shown at the bottom beside the ember dash
 const PAGE_LABELS: Record<string, string> = {
-  home: "Software Engineer",
+  home: "Product engineering",
   about: "About",
   blog: "Writing",
   contact: "Contact",
@@ -26,9 +23,9 @@ const PAGE_LABELS: Record<string, string> = {
 export async function GET({ params }: { params: { slug: string } }) {
   const { slug } = params;
 
-  const [fontNormal, fontItalic] = await Promise.all([
-    loadGoogleFont("DM Serif Display", false),
-    loadGoogleFont("DM Serif Display", true),
+  const [fontNormal, fontBold] = await Promise.all([
+    loadGoogleFont("DM Sans", false, 400),
+    loadGoogleFont("DM Sans", false, 700),
   ]);
 
   const reactElement: ReactElement = createOGEReactElement(
@@ -40,8 +37,8 @@ export async function GET({ params }: { params: { slug: string } }) {
     width: 1200,
     height: 600,
     fonts: [
-      { name: "DM Serif Display", data: fontNormal, style: "normal", weight: 400 },
-      { name: "DM Serif Display", data: fontItalic, style: "italic", weight: 400 },
+      { name: "DM Sans", data: fontNormal, style: "normal", weight: 400 },
+      { name: "DM Sans", data: fontBold, style: "normal", weight: 700 },
     ],
   });
 }

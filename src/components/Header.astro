@@ -2,72 +2,52 @@
 import Logo from "@components/Logo.astro";
 import LinkedIn from "@components/icons/LinkedIn.astro";
 import X from "@components/icons/X.astro";
-import Envelope from "@components/icons/Envelope.astro";
+import Github from "@components/icons/Github.astro";
 import Menu from "@components/icons/Menu.astro";
 import CloseMenu from "@components/icons/CloseMenu.astro";
-import Github from "./icons/Github.astro";
 
+const currentPath = Astro.url.pathname;
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Blog", href: "/blog" },
+  { name: "Writing", href: "/blog" },
 ];
+
+const isCurrent = (href: string) =>
+  href === "/" ? currentPath === "/" : currentPath.startsWith(href);
 ---
 
-<header
-  class="fixed top-0 z-50 w-full transition-all duration-500"
->
-  <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5 lg:px-8">
-    <!-- Logo -->
-    <a id="header-logo" class="relative z-10 transition-opacity duration-300 hover:opacity-60" href="/">
-      <span class="sr-only">Home Link</span>
+<header id="site-header" class="fixed inset-x-0 top-0 z-50 transition-colors duration-200">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 lg:px-8">
+    <a id="header-logo" href="/" class="relative z-10 flex min-h-11 min-w-11 items-center" aria-label="Rob Cipolla, home">
       <Logo variant="light" />
     </a>
 
-    <!-- Desktop nav -->
-    <nav class="hidden items-center gap-10 lg:flex">
-      <ul class="flex items-center gap-8">
-        {
-          navLinks.map((link) => (
-            <li>
-              <a
-                class="text-sm font-medium tracking-wide text-chalk/80 transition-colors duration-300 hover:text-chalk"
-                href={link.href}
-              >
-                {link.name}
-              </a>
-            </li>
-          ))
-        }
+    <nav class="hidden items-center gap-8 lg:flex" aria-label="Primary navigation">
+      <ul class="flex items-center gap-7">
+        {navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              aria-current={isCurrent(link.href) ? "page" : undefined}
+              class="nav-link text-sm font-semibold text-white/75 transition-colors hover:text-white aria-[current=page]:text-white aria-[current=page]:underline aria-[current=page]:underline-offset-8"
+            >
+              {link.name}
+            </a>
+          </li>
+        ))}
       </ul>
 
-      <span class="h-4 w-px bg-chalk/15"></span>
-
-      <div class="flex items-center gap-3">
-        <a
-          class="text-chalk/60 transition-colors duration-300 hover:text-chalk/80"
-          href="https://www.linkedin.com/in/rob-cipolla"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+      <div class="flex items-center gap-1" aria-label="Social links">
+        <a class="social-link flex h-11 w-11 items-center justify-center text-white/65 transition-colors hover:text-white" href="https://www.linkedin.com/in/rob-cipolla" target="_blank" rel="noopener noreferrer">
           <span class="sr-only">LinkedIn</span>
           <LinkedIn class="h-4 w-4" />
         </a>
-        <a
-          class="text-chalk/60 transition-colors duration-300 hover:text-chalk/80"
-          href="https://twitter.com/robcipolla"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="sr-only">Twitter/X</span>
+        <a class="social-link flex h-11 w-11 items-center justify-center text-white/65 transition-colors hover:text-white" href="https://x.com/robcipolla" target="_blank" rel="noopener noreferrer">
+          <span class="sr-only">X</span>
           <X class="h-4 w-4" />
         </a>
-        <a
-          class="text-chalk/60 transition-colors duration-300 hover:text-chalk/80"
-          href="https://github.com/robcipolla"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a class="social-link flex h-11 w-11 items-center justify-center text-white/65 transition-colors hover:text-white" href="https://github.com/robcipolla" target="_blank" rel="noopener noreferrer">
           <span class="sr-only">GitHub</span>
           <Github class="h-4 w-4" />
         </a>
@@ -75,83 +55,68 @@ const navLinks = [
 
       <a
         id="contact-button"
-        class="rounded border border-chalk/20 px-4 py-2 text-sm font-medium text-chalk/80 transition-all duration-300 hover:border-chalk/50 hover:text-chalk"
+        class="rounded border border-white/35 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white hover:bg-white hover:text-charcoal"
         href="/contact"
+        aria-current={currentPath.startsWith("/contact") ? "page" : undefined}
       >
-        Get in touch
+        Contact
       </a>
     </nav>
 
-    <!-- Mobile controls -->
-    <div id="right-side" class="flex items-center gap-3 lg:hidden">
-      <a
-        aria-label="Get in touch"
-        id="mobile-contact"
-        class="rounded border border-chalk/20 p-2 text-chalk/70 transition-colors hover:text-chalk"
-        href="/contact"
-      >
-        <Envelope className="h-5 w-5" />
-      </a>
-      <button
-        class="rounded border border-chalk/20 p-2 text-chalk/70 transition-colors hover:text-chalk"
-        aria-label="Open menu"
-      >
-        <Menu id="open-menu-icon" class="h-5 w-5" />
-        <CloseMenu id="close-menu-icon" class="hidden h-5 w-5" />
-      </button>
-    </div>
+    <button
+      id="mobile-menu-toggle"
+      type="button"
+      class="relative z-50 flex h-11 w-11 items-center justify-center rounded border border-white/30 text-white lg:hidden"
+      aria-label="Open menu"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+    >
+      <Menu id="open-menu-icon" class="h-5 w-5" />
+      <CloseMenu id="close-menu-icon" class="hidden h-5 w-5" />
+    </button>
   </div>
 </header>
 
-<!-- Mobile menu -->
 <nav
   id="mobile-menu"
-  class="pointer-events-none fixed inset-0 z-40 flex flex-col items-center justify-center bg-nightfall/95 opacity-0 backdrop-blur-md transition-all duration-300 lg:!hidden"
+  class="fixed inset-0 z-40 hidden flex-col justify-center bg-charcoal px-6 pt-20 lg:!hidden"
+  aria-label="Mobile navigation"
+  aria-hidden="true"
+  hidden
 >
-  <ul class="flex flex-col items-center gap-6">
-    {
-      navLinks.map((link) => (
-        <li>
-          <a class="font-serif text-3xl text-chalk/80 transition-colors hover:text-chalk" href={link.href}>
-            {link.name}
-          </a>
-        </li>
-      ))
-    }
-    <li class="pt-4">
+  <ul class="flex flex-col border-t border-white/15">
+    {navLinks.map((link) => (
+      <li class="border-b border-white/15">
+        <a
+          data-mobile-link
+          href={link.href}
+          aria-current={isCurrent(link.href) ? "page" : undefined}
+          class="flex min-h-16 items-center text-2xl font-semibold text-white/80 aria-[current=page]:text-white"
+        >
+          {link.name}
+        </a>
+      </li>
+    ))}
+    <li class="border-b border-white/15">
       <a
-        class="rounded border border-chalk/20 px-6 py-3 text-sm font-medium text-chalk/80 transition-colors hover:border-chalk/50 hover:text-chalk"
+        data-mobile-link
         href="/contact"
-      >
-        Get in touch
-      </a>
+        aria-current={currentPath.startsWith("/contact") ? "page" : undefined}
+        class="flex min-h-16 items-center text-2xl font-semibold text-white/80 aria-[current=page]:text-white"
+      >Contact</a>
     </li>
   </ul>
-  <div class="flex items-center gap-4 pt-10">
-    <a
-      class="text-chalk/60 transition-colors hover:text-chalk/80"
-      href="https://www.linkedin.com/in/rob-cipolla"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+
+  <div class="mt-8 flex items-center gap-2">
+    <a data-mobile-link class="flex h-12 w-12 items-center justify-center text-white/65" href="https://www.linkedin.com/in/rob-cipolla" target="_blank" rel="noopener noreferrer">
       <span class="sr-only">LinkedIn</span>
       <LinkedIn class="h-5 w-5" />
     </a>
-    <a
-      class="text-chalk/60 transition-colors hover:text-chalk/80"
-      href="https://twitter.com/robcipolla"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <span class="sr-only">Twitter/X</span>
+    <a data-mobile-link class="flex h-12 w-12 items-center justify-center text-white/65" href="https://x.com/robcipolla" target="_blank" rel="noopener noreferrer">
+      <span class="sr-only">X</span>
       <X class="h-5 w-5" />
     </a>
-    <a
-      class="text-chalk/60 transition-colors hover:text-chalk/80"
-      href="https://github.com/robcipolla"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a data-mobile-link class="flex h-12 w-12 items-center justify-center text-white/65" href="https://github.com/robcipolla" target="_blank" rel="noopener noreferrer">
       <span class="sr-only">GitHub</span>
       <Github class="h-5 w-5" />
     </a>
@@ -160,142 +125,136 @@ const navLinks = [
 
 <style>
   .header-scrolled {
-    background-color: rgba(244, 241, 236, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(214, 210, 203, 0.5);
+    background: rgba(245, 245, 247, 0.98);
+    border-bottom: 1px solid #d3d3d9;
   }
 
-  .header-scrolled a {
-    color: #1A1814;
+  .header-scrolled #header-logo :global(path) {
+    fill: #17171c;
   }
 
-  .header-scrolled nav a {
-    color: #57534E;
+  .header-scrolled .nav-link,
+  .header-scrolled .social-link {
+    color: #5f6069;
   }
 
-  .header-scrolled nav a:hover {
-    color: #1A1814;
+  .header-scrolled .nav-link:hover,
+  .header-scrolled .social-link:hover,
+  .header-scrolled .nav-link[aria-current="page"] {
+    color: #17171c;
   }
 
-  .header-scrolled :global(svg path) {
-    fill: #1A1814;
-  }
-
-  .header-scrolled nav :global(svg path) {
-    fill: #57534E;
-  }
-
-  .header-scrolled nav a:hover :global(svg path) {
-    fill: #1A1814;
-  }
-
-  .header-scrolled nav span {
-    background-color: rgba(214, 210, 203, 0.5);
-  }
-
-  .header-scrolled #contact-button {
-    color: #FDFCFA;
-    background-color: #1A1814;
-    border-color: #1A1814;
-  }
-
-  .header-scrolled #contact-button:hover {
-    background-color: #B5400D;
-    border-color: #B5400D;
-  }
-
-  .header-scrolled #contact-button :global(svg path) {
-    fill: #FDFCFA;
-  }
-
-  #right-side :global(svg path) {
+  .header-scrolled .social-link :global(path) {
     fill: currentColor;
   }
 
-  .header-scrolled #right-side a,
-  .header-scrolled #right-side button {
-    color: #57534E;
-    border-color: rgba(214, 210, 203, 1);
+  .header-scrolled #contact-button {
+    border-color: #17171c;
+    background: #17171c;
+    color: #ffffff;
   }
 
-  .header-scrolled #right-side :global(svg path) {
-    fill: #57534E;
+  .header-scrolled #contact-button:hover {
+    background: transparent;
+    color: #17171c;
   }
 
-  .header-scrolled #right-side a:hover,
-  .header-scrolled #right-side button:hover {
-    color: #1A1814;
+  .header-scrolled #mobile-menu-toggle {
+    border-color: #d3d3d9;
+    color: #17171c;
   }
 
-  .header-scrolled #right-side a:hover :global(svg path),
-  .header-scrolled #right-side button:hover :global(svg path) {
-    fill: #1A1814;
+  .header-scrolled #mobile-menu-toggle :global(path) {
+    fill: currentColor;
   }
 
-  .mobile-menu-open #header-logo :global(svg path) {
-    fill: #FDFCFA;
+  .mobile-menu-open {
+    background: #292930;
+    border-bottom-color: transparent;
   }
 
-  .mobile-menu-open #right-side a,
-  .mobile-menu-open #right-side button {
-    color: rgba(253, 252, 250, 0.7);
-    border-color: rgba(253, 252, 250, 0.2);
+  .mobile-menu-open #header-logo :global(path) {
+    fill: #ffffff;
   }
 
-  .mobile-menu-open #right-side :global(svg path) {
-    fill: rgba(253, 252, 250, 0.7);
-  }
-
-  .mobile-menu-open.header-scrolled {
-    background-color: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-bottom: none;
+  .mobile-menu-open #mobile-menu-toggle {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
   }
 </style>
 
 <script is:inline>
-  const header = document.querySelector("header");
+  const header = document.getElementById("site-header");
+  const menu = document.getElementById("mobile-menu");
+  const menuButton = document.getElementById("mobile-menu-toggle");
+  const openIcon = document.getElementById("open-menu-icon");
+  const closeIcon = document.getElementById("close-menu-icon");
+  const mobileLinks = menu?.querySelectorAll("[data-mobile-link]") ?? [];
   let menuOpen = false;
 
-  function headerScroll() {
-    if (header && !menuOpen) {
-      header.classList.toggle("header-scrolled", window.scrollY > 0);
-    }
+  const focusableSelector = "a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex='-1'])";
+
+  function updateHeader() {
+    header?.classList.toggle("header-scrolled", window.scrollY > 8 && !menuOpen);
   }
 
-  function toggleMenu() {
-    const openMenuIcon = document.getElementById("open-menu-icon");
-    const closeMenuIcon = document.getElementById("close-menu-icon");
-    const body = document.getElementsByTagName("body")[0];
-    const menu = document.getElementById("mobile-menu");
+  function setMenu(open, restoreFocus = true) {
+    if (!menu || !menuButton) return;
 
-    if (header) {
-      header.classList.toggle("mobile-menu-open");
+    menuOpen = open;
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    menu.setAttribute("aria-hidden", String(!open));
+    menu.hidden = !open;
+    menu.classList.toggle("hidden", !open);
+    menu.classList.toggle("flex", open);
+    header?.classList.toggle("mobile-menu-open", open);
+    document.body.classList.toggle("overflow-hidden", open);
+    openIcon?.classList.toggle("hidden", open);
+    closeIcon?.classList.toggle("hidden", !open);
+
+    if (open) {
+      requestAnimationFrame(() => menu.querySelector("a")?.focus());
+    } else if (restoreFocus) {
+      menuButton.focus();
     }
 
-    openMenuIcon?.classList.toggle("hidden");
-    closeMenuIcon?.classList.toggle("hidden");
-    body?.classList?.toggle("overflow-hidden");
-
-    if (menu) {
-      menu.style.opacity = menuOpen ? "0" : "1";
-      menu.style.pointerEvents = menuOpen ? "none" : "all";
-    }
-
-    menuOpen = !menuOpen;
-
-    // Re-evaluate scroll state after closing
-    if (!menuOpen) {
-      headerScroll();
-    }
+    updateHeader();
   }
-</script>
 
-<script is:inline>
-  document.querySelector("button")?.addEventListener("click", toggleMenu);
+  menuButton?.addEventListener("click", () => setMenu(!menuOpen));
 
-  window.addEventListener("scroll", headerScroll);
-  window.addEventListener("load", headerScroll);
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => setMenu(false, false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!menuOpen || !menu || !menuButton) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setMenu(false);
+      return;
+    }
+
+    if (event.key !== "Tab") return;
+
+    const focusable = [menuButton, ...menu.querySelectorAll(focusableSelector)];
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last?.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first?.focus();
+    }
+  });
+
+  window.addEventListener("scroll", updateHeader, { passive: true });
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 1024 && menuOpen) setMenu(false, false);
+  });
+  updateHeader();
 </script>
